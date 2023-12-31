@@ -1,10 +1,13 @@
 import './App.css';
-import Styles from './Styles';
-
+import Ingredient from './components/Ingredient';
 function App() {
   return (
     <>
-      <Styles />
+      <div className="flex flex-col gap-1 p-1">
+        <Ingredient />
+        <Ingredient />
+        <Ingredient />
+      </div>
     </>
   );
 }
