@@ -1,10 +1,10 @@
-import ingredientsData from '../data/IngredientsData.json';
+import IngredientsData from '../data/IngredientsData.json';
 import Ingredient from './Ingredient';
 
 const IngredientsList = () => {
   return (
     <>
-      {ingredientsData.ingredients.map((data) => {
+      {IngredientsData.ingredients.map((data) => {
         return <Ingredient data={data} />;
       })}
     </>
