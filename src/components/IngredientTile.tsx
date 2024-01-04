@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { LogicContext } from '../context/LogicContext';
 
 interface Props {
   data: IngredientData;
 }
 
 export interface IngredientData {
+  id: string;
   name: string;
   effect1: string;
   effect2: string;
@@ -15,7 +17,9 @@ export interface IngredientData {
 
 const IngredientTile = ({ data }: Props) => {
   const [isSelected, setSelected] = useState(false);
-  const { name, src } = data;
+  const { addSelectedIngredient, removeSelectedIngredient } =
+    useContext(LogicContext);
+  const { id, name, src } = data;
 
   let classes =
     'm-1 flex h-24 w-24 cursor-pointer flex-col items-center rounded-sm border border-gray-200 p-1 shadow-sm hover:shadow-md';
@@ -26,6 +30,8 @@ const IngredientTile = ({ data }: Props) => {
   }
 
   const clickHandler = () => {
+    if (!isSelected) addSelectedIngredient(data);
+    else removeSelectedIngredient(id);
     setSelected(!isSelected);
   };
 

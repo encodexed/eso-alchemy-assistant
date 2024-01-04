@@ -1,16 +1,8 @@
 import { useState } from 'react';
+import { IngredientData } from './IngredientTile';
 
 interface Props {
   data: IngredientData;
-}
-
-export interface IngredientData {
-  name: string;
-  effect1: string;
-  effect2: string;
-  effect3: string;
-  effect4: string;
-  src: string;
 }
 
 const IngredientCard = ({ data }: Props) => {
