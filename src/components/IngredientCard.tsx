@@ -13,7 +13,7 @@ export interface IngredientData {
   src: string;
 }
 
-const Ingredient = ({ data }: Props) => {
+const IngredientCard = ({ data }: Props) => {
   const [isSelected, setSelected] = useState(false);
   const { name, effect1, effect2, effect3, effect4, src } = data;
 
@@ -54,4 +54,4 @@ const Ingredient = ({ data }: Props) => {
   );
 };
 
-export default Ingredient;
+export default IngredientCard;

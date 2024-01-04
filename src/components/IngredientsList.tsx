@@ -1,13 +1,13 @@
 import IngredientsData from '../data/IngredientsData.json';
-import Ingredient from './Ingredient';
+import IngredientTile from './IngredientTile';
 
 const IngredientsList = () => {
   return (
-    <>
+    <div className="flex flex-wrap justify-center border border-black py-1">
       {IngredientsData.ingredients.map((data) => {
-        return <Ingredient data={data} />;
+        return <IngredientTile data={data} />;
       })}
-    </>
+    </div>
   );
 };
 
