@@ -34,6 +34,9 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
   // ? Could setting the ingredients list here be done better, and possibly DRYer?
 
   const addSelectedIngredient = (ingredient: IngredientData) => {
+    if (selectedIngredients.length >= 3) {
+      return;
+    }
     setSelectedIngredients([...selectedIngredients, ingredient]);
     setIngredientsList((prev) => {
       return prev.map((data) => {
