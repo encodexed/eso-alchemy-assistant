@@ -1,10 +1,13 @@
 import './App.css';
-import Styles from './Styles';
-
+import IngredientsList from './components/IngredientsList';
+import SelectedList from './components/SelectedList';
 function App() {
   return (
     <>
-      <Styles />
+      <div className="p-1">
+        <SelectedList />
+        <IngredientsList />
+      </div>
     </>
   );
 }
