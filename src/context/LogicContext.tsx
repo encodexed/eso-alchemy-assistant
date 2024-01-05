@@ -5,6 +5,7 @@ import ingredientsData from '../data/IngredientsData.json';
 export interface LogicCtx {
   ingredientsList: IngredientData[];
   selectedIngredients: IngredientData[];
+  selectedIngredientEffects: string[];
   addSelectedIngredient: (ingredient: IngredientData) => void;
   removeSelectedIngredient: (id: string) => void;
 }
@@ -12,6 +13,7 @@ export interface LogicCtx {
 export const LogicContext = createContext<LogicCtx>({
   ingredientsList: [],
   selectedIngredients: [],
+  selectedIngredientEffects: [],
   addSelectedIngredient: () => {},
   removeSelectedIngredient: () => {},
 });
@@ -20,6 +22,9 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [ingredientsList, setIngredientsList] = useState<IngredientData[]>([]);
   const [selectedIngredients, setSelectedIngredients] = useState<
     IngredientData[]
+  >([]);
+  const [selectedIngredientEffects, setSelectedIngredientEffects] = useState<
+    string[]
   >([]);
 
   useEffect(() => {
@@ -37,13 +42,29 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
     if (selectedIngredients.length >= 3) {
       return;
     }
-    setSelectedIngredients([...selectedIngredients, ingredient]);
+
+    const newSelectedIngredients: IngredientData[] = [
+      ...selectedIngredients,
+      ingredient,
+    ];
+    setSelectedIngredients(newSelectedIngredients);
+    updateSelectedIngredientEffects(newSelectedIngredients);
+
     setIngredientsList((prev) => {
       return prev.map((data) => {
         if (data.id === ingredient.id) data.isSelected = true;
         return data;
       });
     });
+  };
+
+  const updateSelectedIngredientEffects = (ingredients: IngredientData[]) => {
+    const effectsList = ingredients.flatMap((data) => {
+      const { effect1, effect2, effect3, effect4 } = data;
+      return [effect1, effect2, effect3, effect4];
+    });
+
+    setSelectedIngredientEffects(effectsList);
   };
 
   const removeSelectedIngredient = (id: string) => {
@@ -61,6 +82,7 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         ingredientsList,
         selectedIngredients,
+        selectedIngredientEffects,
         addSelectedIngredient,
         removeSelectedIngredient,
       }}
