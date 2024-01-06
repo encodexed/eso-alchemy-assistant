@@ -1,309 +1,336 @@
 {
   "ingredients": [
     {
-      "id": "0",
+      "id": 0,
       "name": "Beetle Scuttle",
-      "effect1": "Breach",
-      "effect2": "Increase Armor",
-      "effect3": "Protection",
-      "effect4": "Vitality",
+      "effects": ["Breach", "Increase Armor", "Protection", "Vitality"],
+      "effectsIDs": [0, 10, 17, 29],
       "src": "/images/ingredients/Beetle_Scuttle.png"
     },
     {
-      "id": "1",
+      "id": 1,
       "name": "Blessed Thistle",
-      "effect1": "Restore Stamina",
-      "effect2": "Increase Weapon Power",
-      "effect3": "Ravage Health",
-      "effect4": "Speed",
+      "effects": [
+        "Restore Stamina",
+        "Increase Weapon Power",
+        "Ravage Health",
+        "Speed"
+      ],
+      "effectsIDs": [23, 13, 18, 24],
       "src": "/images/ingredients/Blessed_Thistle.png"
     },
     {
-      "id": "2",
+      "id": 2,
       "name": "Blue Entoloma",
-      "effect1": "Ravage Magicka",
-      "effect2": "Cowardice",
-      "effect3": "Restore Health",
-      "effect4": "Invisible",
+      "effects": ["Ravage Magicka", "Cowardice", "Restore Health", "Invisible"],
+      "effectsIDs": [19, 1, 21, 14],
       "src": "/images/ingredients/Blue_Entoloma.png"
     },
     {
-      "id": "3",
+      "id": 3,
       "name": "Bugloss",
-      "effect1": "Increase Spell Resist",
-      "effect2": "Restore Health",
-      "effect3": "Cowardice",
-      "effect4": "Restore Magicka",
+      "effects": [
+        "Increase Spell Resist",
+        "Restore Health",
+        "Cowardice",
+        "Restore Magicka"
+      ],
+      "effectsIDs": [12, 21, 1, 22],
       "src": "/images/ingredients/Bugloss.png"
     },
     {
-      "id": "4",
+      "id": 4,
       "name": "Butterfly Wing",
-      "effect1": "Restore Health",
-      "effect2": "Lingering Health",
-      "effect3": "Uncertainty",
-      "effect4": "Vitality",
+      "effects": [
+        "Restore Health",
+        "Lingering Health",
+        "Uncertainty",
+        "Vitality"
+      ],
+      "effectsIDs": [21, 15, 27, 29],
       "src": "/images/ingredients/Butterfly_Wing.png"
     },
     {
-      "id": "5",
+      "id": 5,
       "name": "Chaurus Egg",
-      "effect1": "Timidity",
-      "effect2": "Ravage Magicka",
-      "effect3": "Restore Stamina",
-      "effect4": "Detection",
+      "effects": ["Timidity", "Ravage Magicka", "Restore Stamina", "Detection"],
+      "effectsIDs": [26, 19, 23, 3],
       "src": "/images/ingredients/Chaurus_Egg.png"
     },
     {
-      "id": "6",
+      "id": 6,
       "name": "Clam Gall",
-      "effect1": "Increase Spell Resist",
-      "effect2": "Hindrance",
-      "effect3": "Vulnerability",
-      "effect4": "Defile",
+      "effects": [
+        "Increase Spell Resist",
+        "Hindrance",
+        "Vulnerability",
+        "Defile"
+      ],
+      "effectsIDs": [12, 9, 30, 2],
       "src": "/images/ingredients/Clam_Gall.png"
     },
     {
-      "id": "7",
+      "id": 7,
       "name": "Columbine",
-      "effect1": "Restore Health",
-      "effect2": "Restore Magicka",
-      "effect3": "Restore Stamina",
-      "effect4": "Unstoppable",
+      "effects": [
+        "Restore Health",
+        "Restore Magicka",
+        "Restore Stamina",
+        "Unstoppable"
+      ],
+      "effectsIDs": [21, 22, 23, 28],
       "src": "/images/ingredients/Columbine.png"
     },
     {
-      "id": "8",
+      "id": 8,
       "name": "Corn Flower",
-      "effect1": "Restore Magicka",
-      "effect2": "Increase Spell Power",
-      "effect3": "Ravage Health",
-      "effect4": "Detection",
+      "effects": [
+        "Restore Magicka",
+        "Increase Spell Power",
+        "Ravage Health",
+        "Detection"
+      ],
+      "effectsIDs": [22, 11, 18, 3],
       "src": "/images/ingredients/Corn_Flower.png"
     },
     {
-      "id": "9",
+      "id": 9,
       "name": "Crimson Nirnroot",
-      "effect1": "Timidity",
-      "effect2": "Spell Critical",
-      "effect3": "Gradual Ravage Health",
-      "effect4": "Restore Health",
+      "effects": [
+        "Timidity",
+        "Spell Critical",
+        "Gradual Ravage Health",
+        "Restore Health"
+      ],
+      "effectsIDs": [26, 25, 7, 21],
       "src": "/images/ingredients/Crimson_Nirnroot.png"
     },
     {
-      "id": "10",
+      "id": 10,
       "name": "Dragon's Bile",
-      "effect1": "Heroism",
-      "effect2": "Vulnerability",
-      "effect3": "Invisible",
-      "effect4": "Vitality",
+      "effects": ["Heroism", "Vulnerability", "Invisible", "Vitality"],
+      "effectsIDs": [8, 30, 14, 29],
       "src": "/images/ingredients/Dragons_Bile.png"
     },
     {
-      "id": "11",
+      "id": 11,
       "name": "Dragon's Blood",
-      "effect1": "Lingering Health",
-      "effect2": "Restore Stamina",
-      "effect3": "Heroism",
-      "effect4": "Defile",
+      "effects": ["Lingering Health", "Restore Health", "Heroism", "Defile"],
+      "effectsIDs": [15, 21, 8, 2],
       "src": "/images/ingredients/Dragons_Blood.png"
     },
     {
-      "id": "12",
+      "id": 12,
       "name": "Dragon Rheum",
-      "effect1": "Restore Magicka",
-      "effect2": "Enervation",
-      "effect3": "Heroism",
-      "effect4": "Speed",
+      "effects": ["Restore Magicka", "Enervation", "Heroism", "Speed"],
+      "effectsIDs": [22, 4, 8, 24],
       "src": "/images/ingredients/Dragon_Rheum.png"
     },
     {
-      "id": "13",
+      "id": 13,
       "name": "Dragonthorn",
-      "effect1": "Increase Weapon Power",
-      "effect2": "Restore Stamina",
-      "effect3": "Fracture",
-      "effect4": "Weapon Critical",
+      "effects": [
+        "Increase Weapon Power",
+        "Restore Stamina",
+        "Fracture",
+        "Weapon Critical"
+      ],
+      "effectsIDs": [13, 23, 6, 31],
       "src": "/images/ingredients/Dragonthorn.png"
     },
     {
-      "id": "14",
+      "id": 14,
       "name": "Emetic Russula",
-      "effect1": "Ravage Health",
-      "effect2": "Ravage Magicka",
-      "effect3": "Ravage Stamina",
-      "effect4": "Entrapment",
+      "effects": [
+        "Ravage Health",
+        "Ravage Magicka",
+        "Ravage Stamina",
+        "Entrapment"
+      ],
+      "effectsIDs": [18, 19, 20, 5],
       "src": "/images/ingredients/Emetic_Russula.png"
     },
     {
-      "id": "15",
+      "id": 15,
       "name": "Fleshfly Larva",
-      "effect1": "Ravage Stamina",
-      "effect2": "Vulnerability",
-      "effect3": "Gradual Ravage Health",
-      "effect4": "Vitality",
+      "effects": [
+        "Ravage Stamina",
+        "Vulnerability",
+        "Gradual Ravage Health",
+        "Vitality"
+      ],
+      "effectsIDs": [20, 30, 7, 29],
       "src": "/images/ingredients/Fleshfly_Larva.png"
     },
     {
-      "id": "16",
+      "id": 16,
       "name": "Imp Stool",
-      "effect1": "Maim",
-      "effect2": "Ravage Stamina",
-      "effect3": "Increase Armor",
-      "effect4": "Enervation",
+      "effects": ["Maim", "Ravage Stamina", "Increase Armor", "Enervation"],
+      "effectsIDs": [16, 20, 10, 4],
       "src": "/images/ingredients/Imp_Stool.png"
     },
     {
-      "id": "17",
+      "id": 17,
       "name": "Lady's Smock",
-      "effect1": "Increase Spell Power",
-      "effect2": "Restore Magicka",
-      "effect3": "Breach",
-      "effect4": "Spell Critical",
+      "effects": [
+        "Increase Spell Power",
+        "Restore Magicka",
+        "Breach",
+        "Spell Critical"
+      ],
+      "effectsIDs": [11, 22, 0, 25],
       "src": "/images/ingredients/Ladys_Smock.png"
     },
     {
-      "id": "18",
+      "id": 18,
       "name": "Luminous Russula",
-      "effect1": "Ravage Stamina",
-      "effect2": "Maim",
-      "effect3": "Restore Health",
-      "effect4": "Hindrance",
+      "effects": ["Ravage Stamina", "Maim", "Restore Health", "Hindrance"],
+      "effectsIDs": [20, 16, 21, 9],
       "src": "/images/ingredients/Luminous_Russula.png"
     },
     {
-      "id": "19",
+      "id": 19,
       "name": "Mountain Flower",
-      "effect1": "Increase Armor",
-      "effect2": "Restore Health",
-      "effect3": "Maim",
-      "effect4": "Restore Stamina",
+      "effects": [
+        "Increase Armor",
+        "Restore Health",
+        "Maim",
+        "Restore Stamina"
+      ],
+      "effectsIDs": [10, 21, 16, 23],
       "src": "/images/ingredients/Mountain_Flower.png"
     },
     {
-      "id": "20",
+      "id": 20,
       "name": "Mudcrab Chitin",
-      "effect1": "Increase Spell Resist",
-      "effect2": "Increase Armor",
-      "effect3": "Protection",
-      "effect4": "Defile",
+      "effects": [
+        "Increase Spell Resist",
+        "Increase Armor",
+        "Protection",
+        "Defile"
+      ],
+      "effectsIDs": [12, 10, 17, 2],
       "src": "/images/ingredients/Mudcrab_Chitin.png"
     },
     {
-      "id": "21",
+      "id": 21,
       "name": "Namira's Rot",
-      "effect1": "Spell Critical",
-      "effect2": "Speed",
-      "effect3": "Invisible",
-      "effect4": "Unstoppable",
+      "effects": ["Spell Critical", "Speed", "Invisible", "Unstoppable"],
+      "effectsIDs": [25, 24, 14, 28],
       "src": "/images/ingredients/Namiras_Rot.png"
     },
     {
-      "id": "22",
+      "id": 22,
       "name": "Nightshade",
-      "effect1": "Ravage Health",
-      "effect2": "Protection",
-      "effect3": "Gradual Ravage Health",
-      "effect4": "Defile",
+      "effects": [
+        "Ravage Health",
+        "Protection",
+        "Gradual Ravage Health",
+        "Defile"
+      ],
+      "effectsIDs": [18, 17, 7, 2],
       "src": "/images/ingredients/Nightshade.png"
     },
     {
-      "id": "23",
+      "id": 23,
       "name": "Nirnroot",
-      "effect1": "Ravage Health",
-      "effect2": "Uncertainty",
-      "effect3": "Enervation",
-      "effect4": "Invisible",
+      "effects": ["Ravage Health", "Uncertainty", "Enervation", "Invisible"],
+      "effectsIDs": [18, 27, 4, 14],
       "src": "/images/ingredients/Nirnroot.png"
     },
     {
-      "id": "24",
+      "id": 24,
       "name": "Powdered Mother of Pearl",
-      "effect1": "Lingering Health",
-      "effect2": "Speed",
-      "effect3": "Vitality",
-      "effect4": "Protection",
+      "effects": ["Lingering Health", "Speed", "Vitality", "Protection"],
+      "effectsIDs": [15, 24, 29, 17],
       "src": "/images/ingredients/Powdered_Mother_of_Pearl.png"
     },
     {
-      "id": "25",
+      "id": 25,
       "name": "Scrib Jelly",
-      "effect1": "Ravage Magicka",
-      "effect2": "Speed",
-      "effect3": "Vulnerability",
-      "effect4": "Lingering Health",
+      "effects": [
+        "Ravage Magicka",
+        "Speed",
+        "Vulnerability",
+        "Lingering Health"
+      ],
+      "effectsIDs": [19, 24, 30, 15],
       "src": "/images/ingredients/Scrib_Jelly.png"
     },
     {
-      "id": "26",
+      "id": 26,
       "name": "Spider Egg",
-      "effect1": "Hindrance",
-      "effect2": "Invisible",
-      "effect3": "Lingering Health",
-      "effect4": "Defile",
+      "effects": ["Hindrance", "Invisible", "Lingering Health", "Defile"],
+      "effectsIDs": [9, 14, 15, 2],
       "src": "/images/ingredients/Spider_Egg.png"
     },
     {
-      "id": "27",
+      "id": 27,
       "name": "Stinkhorn",
-      "effect1": "Fracture",
-      "effect2": "Ravage Health",
-      "effect3": "Increase Weapon Power",
-      "effect4": "Ravage Stamina",
+      "effects": [
+        "Fracture",
+        "Ravage Health",
+        "Increase Weapon Power",
+        "Ravage Stamina"
+      ],
+      "effectsIDs": [6, 18, 13, 20],
       "src": "/images/ingredients/Stinkhorn.png"
     },
     {
-      "id": "28",
+      "id": 28,
       "name": "Torchbug Thorax",
-      "effect1": "Fracture",
-      "effect2": "Enervation",
-      "effect3": "Detection",
-      "effect4": "Vitality",
+      "effects": ["Fracture", "Enervation", "Detection", "Vitality"],
+      "effectsIDs": [6, 4, 3, 29],
       "src": "/images/ingredients/Torchbug_Thorax.png"
     },
     {
-      "id": "29",
+      "id": 29,
       "name": "Vile Coagulant",
-      "effect1": "Timidity",
-      "effect2": "Ravage Health",
-      "effect3": "Restore Magicka",
-      "effect4": "Protection",
+      "effects": ["Timidity", "Ravage Health", "Restore Magicka", "Protection"],
+      "effectsIDs": [26, 18, 22, 17],
       "src": "/images/ingredients/Vile_Coagulant.png"
     },
     {
-      "id": "30",
+      "id": 30,
       "name": "Violet Coprinus",
-      "effect1": "Breach",
-      "effect2": "Ravage Health",
-      "effect3": "Increase Spell Power",
-      "effect4": "Ravage Magicka",
+      "effects": [
+        "Breach",
+        "Ravage Health",
+        "Increase Spell Power",
+        "Ravage Magicka"
+      ],
+      "effectsIDs": [0, 18, 11, 19],
       "src": "/images/ingredients/Violet_Coprinus.png"
     },
     {
-      "id": "31",
+      "id": 31,
       "name": "Water Hyacinth",
-      "effect1": "Restore Health",
-      "effect2": "Spell Critical",
-      "effect3": "Weapon Critical",
-      "effect4": "Entrapment",
+      "effects": [
+        "Restore Health",
+        "Spell Critical",
+        "Weapon Critical",
+        "Entrapment"
+      ],
+      "effectsIDs": [21, 25, 31, 5],
       "src": "/images/ingredients/Water_Hyacinth.png"
     },
     {
-      "id": "32",
+      "id": 32,
       "name": "White Cap",
-      "effect1": "Cowardice",
-      "effect2": "Ravage Magicka",
-      "effect3": "Increase Spell Resist",
-      "effect4": "Detection",
+      "effects": [
+        "Cowardice",
+        "Ravage Magicka",
+        "Increase Spell Resist",
+        "Detection"
+      ],
+      "effectsIDs": [1, 19, 12, 3],
       "src": "/images/ingredients/White_Cap.png"
     },
     {
-      "id": "33",
+      "id": 33,
       "name": "Wormwood",
-      "effect1": "Weapon Critical",
-      "effect2": "Hindrance",
-      "effect3": "Detection",
-      "effect4": "Unstoppable",
+      "effects": ["Weapon Critical", "Hindrance", "Detection", "Unstoppable"],
+      "effectsIDs": [31, 9, 3, 28],
       "src": "/images/ingredients/Wormwood.png"
     }
   ]

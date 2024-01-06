@@ -6,7 +6,7 @@ interface Props {
 }
 
 const IngredientCard = ({ data }: Props) => {
-  const { effect1, effect2, effect3, effect4, src } = data;
+  const { effects, src } = data;
   const { removeSelectedIngredient } = useContext(LogicContext);
 
   const clickHandler = () => {
@@ -22,12 +22,12 @@ const IngredientCard = ({ data }: Props) => {
         <img src={src} alt="Ingredient icon" className="w-10" />
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p>{effect1}</p>
-        <p>{effect2}</p>
+        <p>{effects[0]}</p>
+        <p>{effects[1]}</p>
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p>{effect3}</p>
-        <p>{effect4}</p>
+        <p>{effects[2]}</p>
+        <p>{effects[3]}</p>
       </div>
     </div>
   );

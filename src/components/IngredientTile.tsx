@@ -6,12 +6,10 @@ interface Props {
 }
 
 export interface IngredientData {
-  id: string;
+  id: number;
   name: string;
-  effect1: string;
-  effect2: string;
-  effect3: string;
-  effect4: string;
+  effects: string[];
+  effectsIDs: number[];
   src: string;
   isSelected: boolean;
 }

@@ -7,7 +7,7 @@ export interface LogicCtx {
   selectedIngredients: IngredientData[];
   selectedIngredientEffects: string[];
   addSelectedIngredient: (ingredient: IngredientData) => void;
-  removeSelectedIngredient: (id: string) => void;
+  removeSelectedIngredient: (id: number) => void;
 }
 
 export const LogicContext = createContext<LogicCtx>({
@@ -60,15 +60,17 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   const updateSelectedIngredientEffects = (ingredients: IngredientData[]) => {
     const effectsList = ingredients.flatMap((data) => {
-      const { effect1, effect2, effect3, effect4 } = data;
-      return [effect1, effect2, effect3, effect4];
+      const { effects } = data;
+      return [...effects];
     });
 
     setSelectedIngredientEffects(effectsList);
   };
 
-  const removeSelectedIngredient = (id: string) => {
-    setSelectedIngredients(selectedIngredients.filter((ing) => ing.id !== id));
+  const removeSelectedIngredient = (id: number) => {
+    setSelectedIngredients(
+      selectedIngredients.filter((data) => data.id !== id),
+    );
     setIngredientsList((prev) => {
       return prev.map((data) => {
         if (data.id === id) data.isSelected = false;
