@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { IngredientData } from './IngredientTile';
 import { LogicContext } from '../context/LogicContext';
+import { IngredientData } from '../data/interfaces';
 interface Props {
   data: IngredientData;
 }
@@ -22,12 +22,12 @@ const IngredientCard = ({ data }: Props) => {
         <img src={src} alt="Ingredient icon" className="w-10" />
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p>{effects[0]}</p>
-        <p>{effects[1]}</p>
+        <p className="font-semibold">{effects[0]}</p>
+        <p className="font-semibold">{effects[1]}</p>
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p>{effects[2]}</p>
-        <p>{effects[3]}</p>
+        <p className="font-semibold">{effects[2]}</p>
+        <p className="font-semibold">{effects[3]}</p>
       </div>
     </div>
   );

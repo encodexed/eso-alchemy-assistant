@@ -1,17 +1,9 @@
 import { useContext } from 'react';
 import { LogicContext } from '../context/LogicContext';
+import { IngredientData } from '../data/interfaces';
 
 interface Props {
   data: IngredientData;
-}
-
-export interface IngredientData {
-  id: number;
-  name: string;
-  effects: string[];
-  effectsIDs: number[];
-  src: string;
-  isSelected: boolean;
 }
 
 const IngredientTile = ({ data }: Props) => {

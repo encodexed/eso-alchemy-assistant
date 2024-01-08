@@ -1,17 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { IngredientData } from '../components/IngredientTile';
 import ingredientsData from '../data/IngredientsData.json';
-
-export interface LogicCtx {
-  ingredientsList: IngredientData[];
-  selectedIngredients: IngredientData[];
-  selectedIngredientEffects: string[];
-  addSelectedIngredient: (ingredient: IngredientData) => void;
-  removeSelectedIngredient: (id: number) => void;
-}
+import effectsData from '../data/EffectsData.json';
+import { EffectData, IngredientData, LogicCtx } from '../data/interfaces';
 
 export const LogicContext = createContext<LogicCtx>({
   ingredientsList: [],
+  effectsList: [],
   selectedIngredients: [],
   selectedIngredientEffects: [],
   addSelectedIngredient: () => {},
@@ -19,7 +13,9 @@ export const LogicContext = createContext<LogicCtx>({
 });
 
 const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
+  // * useStates *
   const [ingredientsList, setIngredientsList] = useState<IngredientData[]>([]);
+  const [effectsList, setEffectsList] = useState<EffectData[]>([]);
   const [selectedIngredients, setSelectedIngredients] = useState<
     IngredientData[]
   >([]);
@@ -27,17 +23,22 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
     string[]
   >([]);
 
+  // * useEffects *
   useEffect(() => {
-    const initList: IngredientData[] = ingredientsData.ingredients.map(
-      (data) => {
+    const initIngredientList: IngredientData[] =
+      ingredientsData.ingredients.map((data) => {
         return { ...data, isSelected: false };
-      },
-    );
-    setIngredientsList(initList);
+      });
+    setIngredientsList(initIngredientList);
+
+    const initEffectList: EffectData[] = effectsData.effects.map((data) => {
+      return { ...data, assignedColor: 'none' };
+    });
+    setEffectsList(initEffectList);
   }, []);
 
   // ? Could setting the ingredients list here be done better, and possibly DRYer?
-
+  // * Functions *
   const addSelectedIngredient = (ingredient: IngredientData) => {
     if (selectedIngredients.length >= 3) {
       return;
@@ -79,10 +80,13 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
     });
   };
 
+  // * Provider *
+
   return (
     <LogicContext.Provider
       value={{
         ingredientsList,
+        effectsList,
         selectedIngredients,
         selectedIngredientEffects,
         addSelectedIngredient,
