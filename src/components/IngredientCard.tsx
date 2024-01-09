@@ -7,10 +7,10 @@ interface Props {
 
 const IngredientCard = ({ data }: Props) => {
   const { effects, src } = data;
-  const { removeSelectedIngredient } = useContext(LogicContext);
+  const { toggleSelectedIngredient } = useContext(LogicContext);
 
   const clickHandler = () => {
-    removeSelectedIngredient(data.id);
+    toggleSelectedIngredient(data.id, false);
   };
 
   return (

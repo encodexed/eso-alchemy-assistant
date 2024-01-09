@@ -7,21 +7,20 @@ interface Props {
 }
 
 const IngredientTile = ({ data }: Props) => {
-  const { addSelectedIngredient, removeSelectedIngredient } =
-    useContext(LogicContext);
-  const { id, name, src, isSelected } = data;
+  const { selections, toggleSelectedIngredient } = useContext(LogicContext);
+  const { id, name, src } = data;
+  const isSelected = selections.includes(data.id);
 
   let classes =
     'm-1 flex h-[104px] w-24 cursor-pointer flex-col items-center rounded-sm border border-gray-200 p-1 shadow-sm hover:shadow-md';
 
-  if (isSelected) {
+  if (selections.includes(data.id)) {
     classes =
       'm-1 flex h-[104px] w-24 cursor-pointer flex-col items-center rounded-sm border-2 border-green-300 p-1 shadow-md hover:border-red-300';
   }
 
   const clickHandler = () => {
-    if (!isSelected) addSelectedIngredient(id);
-    else removeSelectedIngredient(id);
+    toggleSelectedIngredient(id, !isSelected);
   };
 
   return (

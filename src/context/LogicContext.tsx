@@ -2,29 +2,26 @@ import React, { createContext, useEffect, useState } from 'react';
 import ingredientsData from '../data/IngredientsData.json';
 import effectsData from '../data/EffectsData.json';
 import { EffectData, IngredientData, LogicCtx } from '../data/interfaces';
-import {
-  deselectIngredient,
-  getSelectedIngredientsCount,
-  selectIngredient,
-} from '../services/stateUtilities';
+import { toggleIngredient } from '../services/stateUtilities';
 
 export const LogicContext = createContext<LogicCtx>({
   ingredientsList: [],
   effectsList: [],
-  addSelectedIngredient: () => {},
-  removeSelectedIngredient: () => {},
+  selections: [],
+  toggleSelectedIngredient: () => {},
 });
 
 const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
   // * useStates *
   const [ingredientsList, setIngredientsList] = useState<IngredientData[]>([]);
   const [effectsList, setEffectsList] = useState<EffectData[]>([]);
+  const [selections, setSelections] = useState<number[]>([]);
 
   // * useEffects *
   useEffect(() => {
     const initIngredientList: IngredientData[] =
       ingredientsData.ingredients.map((data) => {
-        return { ...data, isSelected: false };
+        return { ...data };
       });
     setIngredientsList(initIngredientList);
 
@@ -35,39 +32,23 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   // * Functions *
-  const addSelectedIngredient = (id: number) => {
-    // Check to see if maximum number of ingredients has been reached
-    if (getSelectedIngredientsCount(ingredientsList) >= 3) return;
 
-    // Clone ingredients list to modify it
-    const newIngredientsList = [...ingredientsList];
+  const toggleSelectedIngredient = (id: number, isAdding: boolean) => {
+    if (selections.length >= 3 && isAdding) return;
     const newEffectsList = [...effectsList];
-    const newState = selectIngredient(id, newIngredientsList, newEffectsList);
-    setIngredientsList(newState.ingredients);
+    const newState = toggleIngredient(id, isAdding, newEffectsList, selections);
     setEffectsList(newState.effects);
-  };
-
-  const removeSelectedIngredient = (id: number) => {
-    // Check to see if maximum number of ingredients has been reached
-    if (getSelectedIngredientsCount(ingredientsList) < 0) return;
-
-    // Clone ingredients list to modify it
-    const newIngredientsList = [...ingredientsList];
-    const newEffectsList = [...effectsList];
-    const newState = deselectIngredient(id, newIngredientsList, newEffectsList);
-    setIngredientsList(newState.ingredients);
-    setEffectsList(newState.effects);
+    setSelections(newState.selections);
   };
 
   // * Provider *
-
   return (
     <LogicContext.Provider
       value={{
         ingredientsList,
         effectsList,
-        addSelectedIngredient,
-        removeSelectedIngredient,
+        selections,
+        toggleSelectedIngredient,
       }}
     >
       {children}
