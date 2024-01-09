@@ -6,12 +6,24 @@ interface Props {
 }
 
 const IngredientCard = ({ data }: Props) => {
-  const { effects, src } = data;
-  const { toggleSelectedIngredient } = useContext(LogicContext);
+  const { effects, src, id } = data;
+  const { toggleSelectedIngredient, selections } = useContext(LogicContext);
 
   const clickHandler = () => {
     toggleSelectedIngredient(data.id, false);
   };
+
+  let effect1 = ' text-gray-500';
+  let effect2 = ' text-gray-500';
+  let effect3 = ' text-gray-500';
+  let effect4 = ' text-gray-500';
+
+  if (id === selections[selections.length - 1]) {
+    effect1 = ' text-blue-500';
+    effect2 = ' text-red-500';
+    effect3 = ' text-orange-500';
+    effect4 = ' text-green-500';
+  }
 
   return (
     <div
@@ -22,12 +34,12 @@ const IngredientCard = ({ data }: Props) => {
         <img src={src} alt="Ingredient icon" className="w-10" />
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p className="font-semibold">{effects[0]}</p>
-        <p className="font-semibold">{effects[1]}</p>
+        <p className={`font-semibold${effect1}`}>{effects[0]}</p>
+        <p className={`font-semibold${effect2}`}>{effects[1]}</p>
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p className="font-semibold">{effects[2]}</p>
-        <p className="font-semibold">{effects[3]}</p>
+        <p className={`font-semibold${effect3}`}>{effects[2]}</p>
+        <p className={`font-semibold${effect4}`}>{effects[3]}</p>
       </div>
     </div>
   );
