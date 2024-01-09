@@ -1,9 +1,7 @@
 export interface LogicCtx {
   ingredientsList: IngredientData[];
   effectsList: EffectData[];
-  selectedIngredients: IngredientData[];
-  selectedIngredientEffects: string[];
-  addSelectedIngredient: (ingredient: IngredientData) => void;
+  addSelectedIngredient: (id: number) => void;
   removeSelectedIngredient: (id: number) => void;
 }
 
@@ -30,4 +28,10 @@ export interface EffectData {
   poisonEffect: string;
   src: string;
   assignedColor: string;
+  timesPresent: number;
+}
+
+export interface IngEffStateObjects {
+  ingredients: IngredientData[];
+  effects: EffectData[];
 }

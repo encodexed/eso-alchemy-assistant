@@ -2,12 +2,15 @@ import React, { createContext, useEffect, useState } from 'react';
 import ingredientsData from '../data/IngredientsData.json';
 import effectsData from '../data/EffectsData.json';
 import { EffectData, IngredientData, LogicCtx } from '../data/interfaces';
+import {
+  deselectIngredient,
+  getSelectedIngredientsCount,
+  selectIngredient,
+} from '../services/stateUtilities';
 
 export const LogicContext = createContext<LogicCtx>({
   ingredientsList: [],
   effectsList: [],
-  selectedIngredients: [],
-  selectedIngredientEffects: [],
   addSelectedIngredient: () => {},
   removeSelectedIngredient: () => {},
 });
@@ -16,12 +19,6 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
   // * useStates *
   const [ingredientsList, setIngredientsList] = useState<IngredientData[]>([]);
   const [effectsList, setEffectsList] = useState<EffectData[]>([]);
-  const [selectedIngredients, setSelectedIngredients] = useState<
-    IngredientData[]
-  >([]);
-  const [selectedIngredientEffects, setSelectedIngredientEffects] = useState<
-    string[]
-  >([]);
 
   // * useEffects *
   useEffect(() => {
@@ -32,52 +29,34 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
     setIngredientsList(initIngredientList);
 
     const initEffectList: EffectData[] = effectsData.effects.map((data) => {
-      return { ...data, assignedColor: 'none' };
+      return { ...data, assignedColor: 'none', timesPresent: 0 };
     });
     setEffectsList(initEffectList);
   }, []);
 
-  // ? Could setting the ingredients list here be done better, and possibly DRYer?
   // * Functions *
-  const addSelectedIngredient = (ingredient: IngredientData) => {
-    if (selectedIngredients.length >= 3) {
-      return;
-    }
+  const addSelectedIngredient = (id: number) => {
+    // Check to see if maximum number of ingredients has been reached
+    if (getSelectedIngredientsCount(ingredientsList) >= 3) return;
 
-    const newSelectedIngredients: IngredientData[] = [
-      ...selectedIngredients,
-      ingredient,
-    ];
-    setSelectedIngredients(newSelectedIngredients);
-    updateSelectedIngredientEffects(newSelectedIngredients);
-
-    setIngredientsList((prev) => {
-      return prev.map((data) => {
-        if (data.id === ingredient.id) data.isSelected = true;
-        return data;
-      });
-    });
-  };
-
-  const updateSelectedIngredientEffects = (ingredients: IngredientData[]) => {
-    const effectsList = ingredients.flatMap((data) => {
-      const { effects } = data;
-      return [...effects];
-    });
-
-    setSelectedIngredientEffects(effectsList);
+    // Clone ingredients list to modify it
+    const newIngredientsList = [...ingredientsList];
+    const newEffectsList = [...effectsList];
+    const newState = selectIngredient(id, newIngredientsList, newEffectsList);
+    setIngredientsList(newState.ingredients);
+    setEffectsList(newState.effects);
   };
 
   const removeSelectedIngredient = (id: number) => {
-    setSelectedIngredients(
-      selectedIngredients.filter((data) => data.id !== id),
-    );
-    setIngredientsList((prev) => {
-      return prev.map((data) => {
-        if (data.id === id) data.isSelected = false;
-        return data;
-      });
-    });
+    // Check to see if maximum number of ingredients has been reached
+    if (getSelectedIngredientsCount(ingredientsList) < 0) return;
+
+    // Clone ingredients list to modify it
+    const newIngredientsList = [...ingredientsList];
+    const newEffectsList = [...effectsList];
+    const newState = deselectIngredient(id, newIngredientsList, newEffectsList);
+    setIngredientsList(newState.ingredients);
+    setEffectsList(newState.effects);
   };
 
   // * Provider *
@@ -87,8 +66,6 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
       value={{
         ingredientsList,
         effectsList,
-        selectedIngredients,
-        selectedIngredientEffects,
         addSelectedIngredient,
         removeSelectedIngredient,
       }}

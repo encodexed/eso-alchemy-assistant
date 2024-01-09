@@ -20,7 +20,7 @@ const IngredientTile = ({ data }: Props) => {
   }
 
   const clickHandler = () => {
-    if (!isSelected) addSelectedIngredient(data);
+    if (!isSelected) addSelectedIngredient(id);
     else removeSelectedIngredient(id);
   };
 
