@@ -1,68 +1,64 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { IngredientData } from '../components/IngredientTile';
 import ingredientsData from '../data/IngredientsData.json';
-
-export interface LogicCtx {
-  ingredientsList: IngredientData[];
-  selectedIngredients: IngredientData[];
-  addSelectedIngredient: (ingredient: IngredientData) => void;
-  removeSelectedIngredient: (id: string) => void;
-}
+import effectsData from '../data/EffectsData.json';
+import { EffectData, IngredientData, LogicCtx } from '../services/interfaces';
+import {
+  getHighlightedEffects,
+  toggleIngredient,
+} from '../services/stateUtilities';
 
 export const LogicContext = createContext<LogicCtx>({
   ingredientsList: [],
-  selectedIngredients: [],
-  addSelectedIngredient: () => {},
-  removeSelectedIngredient: () => {},
+  effectsList: [],
+  selections: [],
+  highlightedEffects: [],
+  toggleSelectedIngredient: () => {},
 });
 
 const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
+  // * useStates *
   const [ingredientsList, setIngredientsList] = useState<IngredientData[]>([]);
-  const [selectedIngredients, setSelectedIngredients] = useState<
-    IngredientData[]
-  >([]);
+  const [effectsList, setEffectsList] = useState<EffectData[]>([]);
+  const [selections, setSelections] = useState<number[]>([]);
+  const [highlightedEffects, setHighlightedEffects] = useState<number[]>([]);
 
+  // * useEffects *
   useEffect(() => {
-    const initList: IngredientData[] = ingredientsData.ingredients.map(
-      (data) => {
-        return { ...data, isSelected: false };
-      },
-    );
-    setIngredientsList(initList);
+    const initIngredientList: IngredientData[] =
+      ingredientsData.ingredients.map((data) => {
+        return { ...data };
+      });
+    setIngredientsList(initIngredientList);
+
+    const initEffectList: EffectData[] = effectsData.effects.map((data) => {
+      return { ...data, timesPresent: 0 };
+    });
+    setEffectsList(initEffectList);
   }, []);
 
-  // ? Could setting the ingredients list here be done better, and possibly DRYer?
+  useEffect(() => {
+    setHighlightedEffects(getHighlightedEffects(selections));
+  }, [selections]);
 
-  const addSelectedIngredient = (ingredient: IngredientData) => {
-    if (selectedIngredients.length >= 3) {
-      return;
-    }
-    setSelectedIngredients([...selectedIngredients, ingredient]);
-    setIngredientsList((prev) => {
-      return prev.map((data) => {
-        if (data.id === ingredient.id) data.isSelected = true;
-        return data;
-      });
-    });
+  // * Functions *
+  const toggleSelectedIngredient = (id: number, isAdding: boolean) => {
+    if (selections.length >= 3 && isAdding) return;
+
+    const newEffectsList = [...effectsList];
+    const newState = toggleIngredient(id, isAdding, newEffectsList, selections);
+    setEffectsList(newState.effects);
+    setSelections(newState.selections);
   };
 
-  const removeSelectedIngredient = (id: string) => {
-    setSelectedIngredients(selectedIngredients.filter((ing) => ing.id !== id));
-    setIngredientsList((prev) => {
-      return prev.map((data) => {
-        if (data.id === id) data.isSelected = false;
-        return data;
-      });
-    });
-  };
-
+  // * Provider *
   return (
     <LogicContext.Provider
       value={{
         ingredientsList,
-        selectedIngredients,
-        addSelectedIngredient,
-        removeSelectedIngredient,
+        effectsList,
+        selections,
+        highlightedEffects,
+        toggleSelectedIngredient,
       }}
     >
       {children}

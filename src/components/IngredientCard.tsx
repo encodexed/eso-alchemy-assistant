@@ -1,17 +1,29 @@
 import { useContext } from 'react';
-import { IngredientData } from './IngredientTile';
 import { LogicContext } from '../context/LogicContext';
+import { IngredientData } from '../services/interfaces';
 interface Props {
   data: IngredientData;
 }
 
 const IngredientCard = ({ data }: Props) => {
-  const { effect1, effect2, effect3, effect4, src } = data;
-  const { removeSelectedIngredient } = useContext(LogicContext);
+  const { effects, src, id } = data;
+  const { toggleSelectedIngredient, selections } = useContext(LogicContext);
 
   const clickHandler = () => {
-    removeSelectedIngredient(data.id);
+    toggleSelectedIngredient(data.id, false);
   };
+
+  let effect1 = ' text-gray-400';
+  let effect2 = ' text-gray-400';
+  let effect3 = ' text-gray-400';
+  let effect4 = ' text-gray-400';
+
+  if (id === selections[selections.length - 1]) {
+    effect1 = ' text-blue-500';
+    effect2 = ' text-red-500';
+    effect3 = ' text-orange-500';
+    effect4 = ' text-green-500';
+  }
 
   return (
     <div
@@ -22,12 +34,12 @@ const IngredientCard = ({ data }: Props) => {
         <img src={src} alt="Ingredient icon" className="w-10" />
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p>{effect1}</p>
-        <p>{effect2}</p>
+        <p className={`font-semibold${effect1}`}>{effects[0]}</p>
+        <p className={`font-semibold${effect2}`}>{effects[1]}</p>
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p>{effect3}</p>
-        <p>{effect4}</p>
+        <p className={`font-semibold${effect3}`}>{effects[2]}</p>
+        <p className={`font-semibold${effect4}`}>{effects[3]}</p>
       </div>
     </div>
   );
