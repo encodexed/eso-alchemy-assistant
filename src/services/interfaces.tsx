@@ -2,7 +2,7 @@ export interface LogicCtx {
   ingredientsList: IngredientData[];
   effectsList: EffectData[];
   selections: number[];
-  highlightedEffects: EffectsColorsObject | null;
+  highlightedEffects: number[];
   toggleSelectedIngredient: (id: number, isAdding: boolean) => void;
 }
 
@@ -28,11 +28,4 @@ export interface EffectData {
   poisonEffect: string;
   src: string;
   timesPresent: number;
-}
-
-export interface EffectsColorsObject {
-  red: number;
-  blue: number;
-  orange: number;
-  green: number;
 }

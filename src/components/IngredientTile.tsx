@@ -1,14 +1,19 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LogicContext } from '../context/LogicContext';
 import { IngredientData } from '../services/interfaces';
+import { assignColors } from '../services/stateUtilities';
 
 interface Props {
   data: IngredientData;
 }
 
+const initColors = ['', '', '', ''];
+
 const IngredientTile = ({ data }: Props) => {
-  const { selections, toggleSelectedIngredient } = useContext(LogicContext);
-  const { id, name, src } = data;
+  const [colors, setColors] = useState<string[]>(initColors);
+  const { selections, toggleSelectedIngredient, highlightedEffects } =
+    useContext(LogicContext);
+  const { id, name, src, effectsIDs } = data;
   const isSelected = selections.includes(data.id);
 
   let classes =
@@ -23,6 +28,11 @@ const IngredientTile = ({ data }: Props) => {
     toggleSelectedIngredient(id, !isSelected);
   };
 
+  useEffect(() => {
+    if (highlightedEffects.length === 0) setColors(initColors);
+    setColors(assignColors(effectsIDs, highlightedEffects));
+  }, [highlightedEffects, effectsIDs]);
+
   return (
     <div className={classes} onClick={clickHandler}>
       <div className="h-1/2">
@@ -34,10 +44,18 @@ const IngredientTile = ({ data }: Props) => {
       </div>
 
       <div className="flex h-1/6 items-center gap-1">
-        <div className="h-[10px] w-[10px] rounded-full border border-gray-300"></div>
-        <div className="h-[10px] w-[10px] rounded-full border border-gray-300"></div>
-        <div className="h-[10px] w-[10px] rounded-full border border-gray-300"></div>
-        <div className="h-[10px] w-[10px] rounded-full border border-gray-300"></div>
+        <div
+          className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[0]}`}
+        ></div>
+        <div
+          className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[1]}`}
+        ></div>
+        <div
+          className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[2]}`}
+        ></div>
+        <div
+          className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[3]}`}
+        ></div>
       </div>
     </div>
   );

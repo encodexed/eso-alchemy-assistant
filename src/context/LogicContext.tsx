@@ -1,12 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import ingredientsData from '../data/IngredientsData.json';
 import effectsData from '../data/EffectsData.json';
-import {
-  EffectData,
-  EffectsColorsObject,
-  IngredientData,
-  LogicCtx,
-} from '../services/interfaces';
+import { EffectData, IngredientData, LogicCtx } from '../services/interfaces';
 import {
   getHighlightedEffects,
   toggleIngredient,
@@ -16,7 +11,7 @@ export const LogicContext = createContext<LogicCtx>({
   ingredientsList: [],
   effectsList: [],
   selections: [],
-  highlightedEffects: null,
+  highlightedEffects: [],
   toggleSelectedIngredient: () => {},
 });
 
@@ -25,8 +20,7 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [ingredientsList, setIngredientsList] = useState<IngredientData[]>([]);
   const [effectsList, setEffectsList] = useState<EffectData[]>([]);
   const [selections, setSelections] = useState<number[]>([]);
-  const [highlightedEffects, setHighlightedEffects] =
-    useState<EffectsColorsObject | null>(null);
+  const [highlightedEffects, setHighlightedEffects] = useState<number[]>([]);
 
   // * useEffects *
   useEffect(() => {
