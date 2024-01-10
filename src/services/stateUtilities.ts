@@ -1,4 +1,4 @@
-import { EffectData } from '../data/interfaces';
+import { EffectData, EffectsColorsObject } from './interfaces';
 import Ingredients from '../data/IngredientsData.json';
 
 export const toggleIngredient = (
@@ -7,18 +7,36 @@ export const toggleIngredient = (
   effects: EffectData[],
   selections: number[],
 ) => {
-  if (isAdding) selections.push(id);
+  const newEffects = [...effects];
+  const newSelections = [...selections];
+  if (isAdding) newSelections.push(id);
   else {
-    const index = selections.indexOf(id);
-    selections.splice(index, 1);
+    const index = newSelections.indexOf(id);
+    newSelections.splice(index, 1);
   }
 
   const newEffectIDs = Ingredients.ingredients[id].effectsIDs;
   newEffectIDs.forEach((eID) => {
-    if (!isAdding && effects[eID].timesPresent >= 1) {
-      effects[eID].timesPresent--;
-    } else effects[eID].timesPresent++;
+    if (!isAdding && newEffects[eID].timesPresent >= 1) {
+      newEffects[eID].timesPresent--;
+    } else newEffects[eID].timesPresent++;
   });
 
-  return { effects, selections };
+  return { effects: newEffects, selections: newSelections };
+};
+
+export const getHighlightedEffects = (
+  selections: number[],
+): EffectsColorsObject | null => {
+  if (selections.length === 0) return null;
+
+  const effects =
+    Ingredients.ingredients[selections[selections.length - 1]].effectsIDs;
+
+  return {
+    blue: effects[0],
+    red: effects[1],
+    orange: effects[2],
+    green: effects[3],
+  };
 };

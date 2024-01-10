@@ -1,13 +1,22 @@
 import React, { createContext, useEffect, useState } from 'react';
 import ingredientsData from '../data/IngredientsData.json';
 import effectsData from '../data/EffectsData.json';
-import { EffectData, IngredientData, LogicCtx } from '../data/interfaces';
-import { toggleIngredient } from '../services/stateUtilities';
+import {
+  EffectData,
+  EffectsColorsObject,
+  IngredientData,
+  LogicCtx,
+} from '../services/interfaces';
+import {
+  getHighlightedEffects,
+  toggleIngredient,
+} from '../services/stateUtilities';
 
 export const LogicContext = createContext<LogicCtx>({
   ingredientsList: [],
   effectsList: [],
   selections: [],
+  highlightedEffects: null,
   toggleSelectedIngredient: () => {},
 });
 
@@ -16,6 +25,8 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [ingredientsList, setIngredientsList] = useState<IngredientData[]>([]);
   const [effectsList, setEffectsList] = useState<EffectData[]>([]);
   const [selections, setSelections] = useState<number[]>([]);
+  const [highlightedEffects, setHighlightedEffects] =
+    useState<EffectsColorsObject | null>(null);
 
   // * useEffects *
   useEffect(() => {
@@ -26,15 +37,19 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
     setIngredientsList(initIngredientList);
 
     const initEffectList: EffectData[] = effectsData.effects.map((data) => {
-      return { ...data, assignedColor: 'none', timesPresent: 0 };
+      return { ...data, timesPresent: 0 };
     });
     setEffectsList(initEffectList);
   }, []);
 
-  // * Functions *
+  useEffect(() => {
+    setHighlightedEffects(getHighlightedEffects(selections));
+  }, [selections]);
 
+  // * Functions *
   const toggleSelectedIngredient = (id: number, isAdding: boolean) => {
     if (selections.length >= 3 && isAdding) return;
+
     const newEffectsList = [...effectsList];
     const newState = toggleIngredient(id, isAdding, newEffectsList, selections);
     setEffectsList(newState.effects);
@@ -48,6 +63,7 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
         ingredientsList,
         effectsList,
         selections,
+        highlightedEffects,
         toggleSelectedIngredient,
       }}
     >

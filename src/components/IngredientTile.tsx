@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { LogicContext } from '../context/LogicContext';
-import { IngredientData } from '../data/interfaces';
+import { IngredientData } from '../services/interfaces';
 
 interface Props {
   data: IngredientData;
@@ -26,7 +26,7 @@ const IngredientTile = ({ data }: Props) => {
   return (
     <div className={classes} onClick={clickHandler}>
       <div className="h-1/2">
-        <img className="h-full w-auto" src={src} alt={`${name} icon`}></img>
+        <img className="h-full w-auto" src={src} alt={`${name} icon`} />
       </div>
 
       <div className="flex h-1/3 items-end">

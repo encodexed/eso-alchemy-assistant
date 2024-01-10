@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { LogicContext } from '../context/LogicContext';
-import { IngredientData } from '../data/interfaces';
+import { IngredientData } from '../services/interfaces';
 interface Props {
   data: IngredientData;
 }
@@ -13,10 +13,10 @@ const IngredientCard = ({ data }: Props) => {
     toggleSelectedIngredient(data.id, false);
   };
 
-  let effect1 = ' text-gray-500';
-  let effect2 = ' text-gray-500';
-  let effect3 = ' text-gray-500';
-  let effect4 = ' text-gray-500';
+  let effect1 = ' text-gray-400';
+  let effect2 = ' text-gray-400';
+  let effect3 = ' text-gray-400';
+  let effect4 = ' text-gray-400';
 
   if (id === selections[selections.length - 1]) {
     effect1 = ' text-blue-500';
