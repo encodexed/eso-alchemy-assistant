@@ -1,16 +1,17 @@
 import { useContext, useEffect, useState } from 'react';
 import { LogicContext } from '../context/LogicContext';
 import { IngredientData } from '../services/interfaces';
-import { assignColors } from '../services/stateUtilities';
+import { assignColors, getIcons } from '../services/stateUtilities';
 
 interface Props {
   data: IngredientData;
 }
 
-const initColors = ['', '', '', ''];
+const initState = ['', '', '', ''];
 
 const IngredientTile = ({ data }: Props) => {
-  const [colors, setColors] = useState<string[]>(initColors);
+  const [colors, setColors] = useState<string[]>(initState);
+  const [icons, setIcons] = useState<string[]>(initState);
   const [isCompatible, setCompatible] = useState<boolean>(true);
   const { selections, toggleSelectedIngredient, highlightedEffects } =
     useContext(LogicContext);
@@ -24,7 +25,7 @@ const IngredientTile = ({ data }: Props) => {
       highlightedEffects.length === 0 ||
       (selections.length >= 3 && !selections.includes(id))
     ) {
-      setColors(initColors);
+      setColors(initState);
     } else {
       setColors(colors.ids);
     }
@@ -34,6 +35,10 @@ const IngredientTile = ({ data }: Props) => {
     else setCompatible(!colors.isIncompatible);
   }, [highlightedEffects, effectsIDs, selections, id]);
 
+  useEffect(() => {
+    setIcons(getIcons(data.effectsIDs));
+  }, [data.effectsIDs]);
+
   let classes =
     'm-1 flex h-[104px] w-24 cursor-pointer flex-col items-center rounded-sm border border-gray-200 p-1 shadow-sm hover:shadow-md';
 
@@ -41,32 +46,38 @@ const IngredientTile = ({ data }: Props) => {
     toggleSelectedIngredient(id, !isSelected);
   };
 
-  if (selections.length >= 3 && !selections.includes(id)) return <></>;
-
-  if (!isCompatible) {
+  if (!isCompatible || (selections.length >= 3 && !selections.includes(id))) {
     return (
       <div className={`${classes} opacity-40`} onClick={clickHandler}>
         <div className="h-1/2">
           <img className="h-full w-auto" src={src} alt={`${name} icon`} />
         </div>
 
-        <div className="flex h-1/3 items-end">
+        <div className="flex h-1/3 items-center">
           <p className="overflow-clip text-center text-xs font-bold">{name}</p>
         </div>
 
         <div className="flex h-1/6 items-center gap-1">
           <div
-            className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[0]}`}
-          ></div>
+            className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[0]}`}
+          >
+            <img className="h-3 w-3" src={icons[0]} alt="An icon" />
+          </div>
           <div
-            className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[1]}`}
-          ></div>
+            className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[1]}`}
+          >
+            <img className="h-3 w-3" src={icons[1]} alt="An icon" />
+          </div>
           <div
-            className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[2]}`}
-          ></div>
+            className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[2]}`}
+          >
+            <img className="h-3 w-3" src={icons[2]} alt="An icon" />
+          </div>
           <div
-            className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[3]}`}
-          ></div>
+            className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[3]}`}
+          >
+            <img className="h-3 w-3" src={icons[3]} alt="An icon" />
+          </div>
         </div>
       </div>
     );
@@ -83,23 +94,31 @@ const IngredientTile = ({ data }: Props) => {
         <img className="h-full w-auto" src={src} alt={`${name} icon`} />
       </div>
 
-      <div className="flex h-1/3 items-end">
+      <div className="flex h-1/3 items-center">
         <p className="overflow-clip text-center text-xs font-bold">{name}</p>
       </div>
 
       <div className="flex h-1/6 items-center gap-1">
         <div
-          className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[0]}`}
-        ></div>
+          className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[0]}`}
+        >
+          <img className="h-3 w-3" src={icons[0]} alt="An icon" />
+        </div>
         <div
-          className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[1]}`}
-        ></div>
+          className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[1]}`}
+        >
+          <img className="h-3 w-3" src={icons[1]} alt="An icon" />
+        </div>
         <div
-          className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[2]}`}
-        ></div>
+          className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[2]}`}
+        >
+          <img className="h-3 w-3" src={icons[2]} alt="An icon" />
+        </div>
         <div
-          className={`h-[10px] w-[10px] rounded-full border border-gray-300 ${colors[3]}`}
-        ></div>
+          className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[3]}`}
+        >
+          <img className="h-3 w-3" src={icons[3]} alt="An icon" />
+        </div>
       </div>
     </div>
   );

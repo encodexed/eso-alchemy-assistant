@@ -1,5 +1,6 @@
 import { EffectData } from './interfaces';
 import Ingredients from '../data/IngredientsData.json';
+import Effects from '../data/EffectsData.json';
 
 export const toggleIngredient = (
   id: number,
@@ -37,20 +38,26 @@ export const assignColors = (eIDs: number[], hIDs: number[]) => {
     switch (index) {
       case 0:
         isIncompatible = false;
-        return 'bg-blue-500 border-blue-500';
+        return 'bg-blue-100 border-2 border-blue-400';
       case 1:
         isIncompatible = false;
-        return 'bg-red-500 border-red-500';
+        return 'bg-red-100 border-2 border-red-400';
       case 2:
         isIncompatible = false;
-        return 'bg-orange-500 border-orange-500';
+        return 'bg-orange-100 border-2 border-orange-400';
       case 3:
         isIncompatible = false;
-        return 'bg-green-500 border-green-500';
+        return 'bg-green-100 border-2 border-green-400';
       default:
         return '';
     }
   });
 
   return { ids: colors, isIncompatible };
+};
+
+export const getIcons = (eIDs: number[]) => {
+  return eIDs.map((eID) => {
+    return Effects.effects[eID].icon;
+  });
 };
