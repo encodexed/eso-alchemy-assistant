@@ -1,4 +1,4 @@
-import { EffectData } from './interfaces';
+import { EffectData, IngredientData } from './interfaces';
 import Ingredients from '../data/IngredientsData.json';
 import Effects from '../data/EffectsData.json';
 
@@ -27,7 +27,7 @@ export const toggleIngredient = (
 };
 
 export const getHighlightedEffects = (selections: number[]): number[] => {
-  if (selections.length === 0) return [];
+  if (!selections.length) return [];
   return Ingredients.ingredients[selections[selections.length - 1]].effectsIDs;
 };
 
@@ -60,4 +60,18 @@ export const getIcons = (eIDs: number[]) => {
   return eIDs.map((eID) => {
     return Effects.effects[eID].icon;
   });
+};
+
+export const getEffectNamesFromIds = (eIDs: number[]) => {
+  return eIDs.map((eID) => {
+    return Effects.effects[eID].name;
+  });
+};
+
+export const getIngredientsCompatibleByEffect = (eID: number) => {
+  const viable: IngredientData[] = [];
+  Ingredients.ingredients.forEach((i) => {
+    if (i.effectsIDs.includes(eID)) viable.push(i);
+  });
+  return viable;
 };

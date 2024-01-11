@@ -31,7 +31,7 @@ const IngredientTile = ({ data }: Props) => {
     }
 
     // Deciding whether or not the tile should be interactive/grayed out
-    if (selections.length === 0 || selections.includes(id)) setCompatible(true);
+    if (!selections.length || selections.includes(id)) setCompatible(true);
     else setCompatible(!colors.isIncompatible);
   }, [highlightedEffects, effectsIDs, selections, id]);
 
