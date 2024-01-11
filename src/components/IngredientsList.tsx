@@ -9,6 +9,13 @@ import {
 } from '../services/stateUtilities';
 import { IngredientData } from '../services/interfaces';
 
+const colors = [
+  'text-blue-500',
+  'text-red-500',
+  'text-orange-500',
+  'text-green-500',
+];
+
 const IngredientsList = () => {
   const { ingredientsList, selections } = useContext(LogicContext);
   const [lastAddedEffects, setLastAddedEffects] = useState<string[]>([]);
@@ -48,7 +55,7 @@ const IngredientsList = () => {
       {lastAddedEffects.map((eff, index) => {
         return (
           <div key={eff}>
-            <Heading variant="h5" key={eff}>
+            <Heading variant="h5" key={eff} className={colors[index]}>
               {eff}
             </Heading>
             <div className="flex flex-wrap justify-start">
