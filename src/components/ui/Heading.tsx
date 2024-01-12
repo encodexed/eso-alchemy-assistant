@@ -27,11 +27,7 @@ const Heading = ({ children, className, variant }: Props) => {
         <h5 className={`text-lg font-semibold ${className}`}>{children}</h5>
       );
     case 'h6':
-      return (
-        <h6 className={`font-semibold text-neutral-400 ${className}`}>
-          {children}
-        </h6>
-      );
+      return <h6 className={`font-semibold ${className}`}>{children}</h6>;
     default:
       return <h2>Incompatible heading variant</h2>;
   }

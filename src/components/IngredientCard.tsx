@@ -18,11 +18,18 @@ const IngredientCard = ({ data }: Props) => {
   let effect3 = ' text-gray-400';
   let effect4 = ' text-gray-400';
 
-  if (id === selections[selections.length - 1]) {
+  if (id === selections[0]) {
     effect1 = ' text-blue-500';
     effect2 = ' text-red-500';
     effect3 = ' text-yellow-500';
-    effect4 = ' text-teal-500';
+    effect4 = ' text-teal-400';
+  }
+
+  if (id === selections[1]) {
+    effect1 = ' text-orange-500';
+    effect2 = ' text-green-500';
+    effect3 = ' text-purple-500';
+    effect4 = ' text-pink-400';
   }
 
   return (

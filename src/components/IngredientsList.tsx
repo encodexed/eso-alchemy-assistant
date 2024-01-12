@@ -4,35 +4,45 @@ import Heading from './ui/Heading';
 import { LogicContext } from '../context/LogicContext';
 import {
   getEffectNamesFromIds,
-  getHighlightedEffects,
+  getEffectsList,
   getIngredientsCompatibleByEffect,
+  trimSections,
 } from '../services/stateUtilities';
 import { IngredientData } from '../services/interfaces';
 
-const colors = [
+const initColors = [
   'text-blue-500',
   'text-red-500',
   'text-yellow-500',
-  'text-teal-500',
+  'text-teal-400',
   'text-orange-500',
   'text-green-500',
   'text-purple-500',
+  'text-pink-400',
 ];
 
 const IngredientsList = () => {
   const { ingredientsList, selections } = useContext(LogicContext);
-  const [lastAddedEffects, setLastAddedEffects] = useState<string[]>([]);
-  const [lastAddedCompatibles, setLastAddedCompatibles] = useState<
+  const [effectsNamesPool, setEffectsNamesPool] = useState<string[]>([]);
+  const [headingColors, setHeadingColors] = useState<string[]>(initColors);
+  const [compatibleIngredients, setCompatibleIngredients] = useState<
     IngredientData[][]
   >([]);
 
   useEffect(() => {
-    const eIDs = getHighlightedEffects(selections);
-    setLastAddedEffects(getEffectNamesFromIds(eIDs));
+    const eIDs = getEffectsList(selections);
+    const effectsHeadings = getEffectNamesFromIds(eIDs);
     const viableIngredients: IngredientData[][] = eIDs.map((eID) => {
       return getIngredientsCompatibleByEffect(eID);
     });
-    setLastAddedCompatibles(viableIngredients);
+    const trimmed = trimSections(
+      effectsHeadings,
+      viableIngredients,
+      initColors,
+    );
+    setEffectsNamesPool(trimmed.headings);
+    setCompatibleIngredients(trimmed.viable);
+    setHeadingColors(trimmed.colors);
   }, [selections]);
 
   if (!selections.length) {
@@ -50,22 +60,19 @@ const IngredientsList = () => {
     );
   }
 
-  // ! So when two ingredients are selected, we should actually be able to see all compatible ingredients and have their traits highlighted.
-  // ? First set could be more primary: Red, Yellow, Blue, Teal/Indigo? and then Orange, Green, Purple.
-
   return (
     <div className="m-1 flex flex-col justify-center border border-black p-1">
       <Heading variant="h3" className="text-center">
         Ingredients
       </Heading>
-      {lastAddedEffects.map((eff, index) => {
+      {effectsNamesPool.map((eff, index) => {
         return (
-          <div key={eff}>
-            <Heading variant="h5" key={eff} className={colors[index]}>
+          <div key={`${eff} ${index}`}>
+            <Heading variant="h6" key={eff} className={headingColors[index]}>
               {eff}
             </Heading>
             <div className="flex flex-wrap justify-start">
-              {lastAddedCompatibles[index].map((data) => {
+              {compatibleIngredients[index].map((data) => {
                 if (!selections.includes(data.id)) {
                   return (
                     <IngredientTile data={data} key={`${eff} ${data.id}`} />

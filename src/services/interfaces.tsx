@@ -2,7 +2,7 @@ export interface LogicCtx {
   ingredientsList: IngredientData[];
   effectsList: EffectData[];
   selections: number[];
-  highlightedEffects: number[];
+  effectsPool: number[];
   toggleSelectedIngredient: (id: number, isAdding: boolean) => void;
 }
 

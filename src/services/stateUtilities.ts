@@ -26,9 +26,11 @@ export const toggleIngredient = (
   return { effects: newEffects, selections: newSelections };
 };
 
-export const getHighlightedEffects = (selections: number[]): number[] => {
+export const getEffectsList = (selections: number[]): number[] => {
   if (!selections.length) return [];
-  return Ingredients.ingredients[selections[selections.length - 1]].effectsIDs;
+  return selections.flatMap((iID) => {
+    return Ingredients.ingredients[iID].effectsIDs;
+  });
 };
 
 export const assignColors = (eIDs: number[], hIDs: number[]) => {
@@ -48,6 +50,18 @@ export const assignColors = (eIDs: number[], hIDs: number[]) => {
       case 3:
         isIncompatible = false;
         return 'bg-teal-100 border-2 border-teal-400';
+      case 4:
+        isIncompatible = false;
+        return 'bg-orange-100 border-2 border-orange-400';
+      case 5:
+        isIncompatible = false;
+        return 'bg-green-100 border-2 border-green-400';
+      case 6:
+        isIncompatible = false;
+        return 'bg-purple-100 border-2 border-purple-400';
+      case 7:
+        isIncompatible = false;
+        return 'bg-pink-100 border-2 border-pink-400';
       default:
         return '';
     }
@@ -74,4 +88,27 @@ export const getIngredientsCompatibleByEffect = (eID: number) => {
     if (i.effectsIDs.includes(eID)) viable.push(i);
   });
   return viable;
+};
+
+export const trimSections = (
+  headings: string[],
+  ingredients: IngredientData[][],
+  colors: string[],
+) => {
+  const uniqueHeadings: string[] = [];
+  const uniqueIngredientSelections: IngredientData[][] = [];
+  const uniqueColors: string[] = [];
+  headings.forEach((heading, index) => {
+    if (!uniqueHeadings.includes(heading)) {
+      uniqueHeadings.push(heading);
+      uniqueIngredientSelections.push(ingredients[index]);
+      uniqueColors.push(colors[index]);
+    }
+  });
+
+  return {
+    headings: uniqueHeadings,
+    viable: uniqueIngredientSelections,
+    colors: uniqueColors,
+  };
 };
