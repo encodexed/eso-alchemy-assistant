@@ -12,8 +12,11 @@ import { IngredientData } from '../services/interfaces';
 const colors = [
   'text-blue-500',
   'text-red-500',
+  'text-yellow-500',
+  'text-teal-500',
   'text-orange-500',
   'text-green-500',
+  'text-purple-500',
 ];
 
 const IngredientsList = () => {
@@ -46,6 +49,9 @@ const IngredientsList = () => {
       </div>
     );
   }
+
+  // ! So when two ingredients are selected, we should actually be able to see all compatible ingredients and have their traits highlighted.
+  // ? First set could be more primary: Red, Yellow, Blue, Teal/Indigo? and then Orange, Green, Purple.
 
   return (
     <div className="m-1 flex flex-col justify-center border border-black p-1">

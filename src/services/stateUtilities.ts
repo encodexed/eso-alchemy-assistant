@@ -44,10 +44,10 @@ export const assignColors = (eIDs: number[], hIDs: number[]) => {
         return 'bg-red-100 border-2 border-red-400';
       case 2:
         isIncompatible = false;
-        return 'bg-orange-100 border-2 border-orange-400';
+        return 'bg-yellow-100 border-2 border-yellow-400';
       case 3:
         isIncompatible = false;
-        return 'bg-green-100 border-2 border-green-400';
+        return 'bg-teal-100 border-2 border-teal-400';
       default:
         return '';
     }
