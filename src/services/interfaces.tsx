@@ -2,8 +2,10 @@ export interface LogicCtx {
   ingredientsList: IngredientData[];
   effectsList: EffectData[];
   selections: number[];
-  highlightedEffects: number[];
+  effectsPool: number[];
+  filteringBy: number;
   toggleSelectedIngredient: (id: number, isAdding: boolean) => void;
+  applyFilter: (id: number) => void;
 }
 
 export interface IngredientData {

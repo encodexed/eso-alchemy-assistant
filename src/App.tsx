@@ -4,7 +4,7 @@ import SelectedList from './components/SelectedList';
 function App() {
   return (
     <>
-      <div className="p-1">
+      <div className="flex flex-col gap-1 p-1">
         <SelectedList />
         <IngredientsList />
       </div>
