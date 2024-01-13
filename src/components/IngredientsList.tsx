@@ -9,6 +9,7 @@ import {
   trimSections,
 } from '../services/stateUtilities';
 import { IngredientData } from '../services/interfaces';
+import Filter from './Filter';
 
 const initColors = [
   'text-blue-500',
@@ -22,7 +23,7 @@ const initColors = [
 ];
 
 const IngredientsList = () => {
-  const { ingredientsList, selections } = useContext(LogicContext);
+  const { ingredientsList, selections, filteringBy } = useContext(LogicContext);
   const [effectsNamesPool, setEffectsNamesPool] = useState<string[]>([]);
   const [headingColors, setHeadingColors] = useState<string[]>(initColors);
   const [compatibleIngredients, setCompatibleIngredients] = useState<
@@ -45,12 +46,18 @@ const IngredientsList = () => {
     setHeadingColors(trimmed.colors);
   }, [selections]);
 
-  if (!selections.length) {
+  // TODO: Heading with text can be its own component, will be DRYer
+
+  if (!selections.length && filteringBy < 0) {
     return (
       <div className="border border-black py-1">
-        <Heading variant="h3" className="text-center">
-          Ingredients
-        </Heading>
+        <div className="text-center">
+          <Heading variant="h3">Ingredients</Heading>
+          <p className="text-sm">
+            Select ingredients or effects to filter by to get started
+          </p>
+        </div>
+        <Filter />
         <div className="flex flex-wrap justify-center">
           {ingredientsList.map((data) => {
             return <IngredientTile data={data} key={`tile: ${data.id}`} />;
@@ -60,11 +67,32 @@ const IngredientsList = () => {
     );
   }
 
+  if (!selections.length && filteringBy >= 0) {
+    return (
+      <div className="border border-black py-1">
+        <div className="text-center">
+          <Heading variant="h3">Ingredients</Heading>
+          <p className="text-sm">
+            Select ingredients or effects to filter by to get started
+          </p>
+        </div>
+        <Filter />
+        <div className="flex flex-wrap justify-center">
+          {ingredientsList.map((data) => {
+            if (data.effectsIDs.includes(filteringBy)) {
+              return <IngredientTile data={data} key={`tile: ${data.id}`} />;
+            }
+          })}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="m-1 flex flex-col justify-center border border-black p-1">
-      <Heading variant="h3" className="text-center">
-        Ingredients
-      </Heading>
+      <div className="text-center">
+        <Heading variant="h3">Ingredients</Heading>
+      </div>
       {effectsNamesPool.map((eff, index) => {
         return (
           <div key={`${eff} ${index}`}>

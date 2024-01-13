@@ -8,9 +8,12 @@ const SelectedList = () => {
 
   return (
     <div className="flex h-56 flex-col border border-black p-1 pr-3">
-      <Heading variant="h3" className="text-center">
-        Selected Ingredients
-      </Heading>
+      <div className="text-center">
+        <Heading variant="h3">Selected Ingredients</Heading>
+        {!selections.length && (
+          <p className="text-sm">Selected ingredients will show up here</p>
+        )}
+      </div>
       <div className="flex flex-col">
         {selections.map((i) => {
           return (

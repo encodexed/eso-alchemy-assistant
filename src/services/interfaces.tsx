@@ -3,7 +3,9 @@ export interface LogicCtx {
   effectsList: EffectData[];
   selections: number[];
   effectsPool: number[];
+  filteringBy: number;
   toggleSelectedIngredient: (id: number, isAdding: boolean) => void;
+  applyFilter: (id: number) => void;
 }
 
 export interface IngredientData {

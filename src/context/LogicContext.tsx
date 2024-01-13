@@ -9,7 +9,9 @@ export const LogicContext = createContext<LogicCtx>({
   effectsList: [],
   selections: [],
   effectsPool: [],
+  filteringBy: -1,
   toggleSelectedIngredient: () => {},
+  applyFilter: () => {},
 });
 
 const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
@@ -18,6 +20,7 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [effectsList, setEffectsList] = useState<EffectData[]>([]);
   const [selections, setSelections] = useState<number[]>([]);
   const [effectsPool, setEffectsPool] = useState<number[]>([]);
+  const [filteringBy, setFilteringBy] = useState<number>(-1);
 
   // * useEffects *
   useEffect(() => {
@@ -47,6 +50,10 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
     setSelections(newState.selections);
   };
 
+  const applyFilter = (id: number) => {
+    setFilteringBy(id);
+  };
+
   // * Provider *
   return (
     <LogicContext.Provider
@@ -55,7 +62,9 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
         effectsList,
         selections,
         effectsPool,
+        filteringBy,
         toggleSelectedIngredient,
+        applyFilter,
       }}
     >
       {children}
