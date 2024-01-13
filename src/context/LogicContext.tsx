@@ -38,6 +38,7 @@ const LogicContextProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     setEffectsPool(getEffectsList(selections));
+    setFilteringBy(-1);
   }, [selections]);
 
   // * Functions *
