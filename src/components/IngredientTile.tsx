@@ -32,20 +32,15 @@ const IngredientTile = ({ data }: Props) => {
     setIcons(getIcons(data.effectsIDs));
   }, [data.effectsIDs]);
 
-  let classes =
-    'm-1 flex h-[104px] w-24 cursor-pointer flex-col items-center rounded-sm border border-gray-200 p-1 shadow-sm hover:shadow-md';
-
-  if (selections.includes(data.id)) {
-    classes =
-      'm-1 flex h-[104px] w-24 cursor-pointer flex-col items-center rounded-sm border-2 border-green-300 p-1 shadow-md hover:border-red-300';
-  }
-
   const clickHandler = () => {
     toggleSelectedIngredient(id, !isSelected);
   };
 
   return (
-    <div className={classes} onClick={clickHandler}>
+    <div
+      className="m-1 flex h-[104px] w-24 cursor-pointer flex-col items-center rounded-sm border border-gray-200 p-1 shadow-sm hover:shadow-md"
+      onClick={clickHandler}
+    >
       <div className="h-1/2">
         <img className="h-full w-auto" src={src} alt={`${name} icon`} />
       </div>
@@ -56,22 +51,30 @@ const IngredientTile = ({ data }: Props) => {
 
       <div className="flex h-1/6 items-center gap-1">
         <div
-          className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[0]}`}
+          className={`flex h-4 w-4 items-center justify-center rounded-full ${
+            colors[0] || 'border border-gray-200'
+          }`}
         >
           <img className="h-3 w-3" src={icons[0]} alt="An icon" />
         </div>
         <div
-          className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[1]}`}
+          className={`flex h-4 w-4 items-center justify-center rounded-full ${
+            colors[1] || 'border border-gray-200'
+          }`}
         >
           <img className="h-3 w-3" src={icons[1]} alt="An icon" />
         </div>
         <div
-          className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[2]}`}
+          className={`flex h-4 w-4 items-center justify-center rounded-full ${
+            colors[2] || 'border border-gray-200'
+          }`}
         >
           <img className="h-3 w-3" src={icons[2]} alt="An icon" />
         </div>
         <div
-          className={`flex h-4 w-4 items-center justify-center rounded-full border border-gray-200 ${colors[3]}`}
+          className={`flex h-4 w-4 items-center justify-center rounded-full ${
+            colors[3] || 'border border-gray-200'
+          }`}
         >
           <img className="h-3 w-3" src={icons[3]} alt="An icon" />
         </div>
