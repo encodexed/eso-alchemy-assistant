@@ -4,6 +4,7 @@ export interface LogicCtx {
   selections: number[];
   effectsPool: number[];
   filteringBy: number;
+  results: MatchedEffects[];
   toggleSelectedIngredient: (id: number, isAdding: boolean) => void;
   applyFilter: (id: number) => void;
 }
@@ -30,4 +31,11 @@ export interface EffectData {
   poisonEffect: string;
   src: string;
   timesPresent: number;
+}
+
+export interface MatchedEffects {
+  effect: string;
+  id: number;
+  timesPresent: number;
+  isCountered: boolean;
 }

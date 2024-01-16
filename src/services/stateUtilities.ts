@@ -1,4 +1,4 @@
-import { EffectData, IngredientData } from './interfaces';
+import { EffectData, IngredientData, MatchedEffects } from './interfaces';
 import Ingredients from '../data/IngredientsData.json';
 import Effects from '../data/EffectsData.json';
 
@@ -111,4 +111,46 @@ export const trimSections = (
     viable: uniqueIngredientSelections,
     colors: uniqueColors,
   };
+};
+
+export const getResults = (effects: number[]): MatchedEffects[] => {
+  if (!effects) return [];
+
+  // Clone and sort the effectsList
+  const sortedEffects: number[] = [...effects].sort();
+
+  const matches: MatchedEffects[] = [];
+
+  // Find matches based on numbers occurring 2 or 3 times consecutively
+  for (let i = 0; i < sortedEffects.length - 1; i++) {
+    // Compare current number with next number
+    if (sortedEffects[i] === sortedEffects[i + 1]) {
+      let occurences = 2;
+
+      // If 2 in a row, also check for 3 in a row
+      if (
+        i <= sortedEffects.length - 2 &&
+        sortedEffects[i] === sortedEffects[i + 2]
+      ) {
+        occurences = 3;
+        i++;
+      }
+      matches.push({
+        effect: Effects.effects[sortedEffects[i]].name,
+        id: sortedEffects[i],
+        timesPresent: occurences,
+        isCountered: false,
+      });
+    }
+  }
+
+  // Check for counters
+  matches.forEach((match) => {
+    const counter = Effects.effects[match.id].counterEffect;
+    if (effects.includes(counter)) {
+      match.isCountered = true;
+    }
+  });
+
+  return matches;
 };
