@@ -1,36 +1,24 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { LogicContext } from '../context/LogicContext';
 import { IngredientData } from '../services/interfaces';
+import { getCardEffectColors } from '../services/stateUtilities';
 interface Props {
   data: IngredientData;
 }
 
 const IngredientCard = ({ data }: Props) => {
   const { effects, src, id } = data;
-  const { toggleSelectedIngredient, selections } = useContext(LogicContext);
+  const { toggleSelectedIngredient, selections, results } =
+    useContext(LogicContext);
+  const [effectColors, setEffectColors] = useState<string[]>([]);
+
+  useEffect(() => {
+    setEffectColors(getCardEffectColors(id, selections, results));
+  }, [id, selections, results]);
 
   const clickHandler = () => {
     toggleSelectedIngredient(data.id, false);
   };
-
-  let effect1 = ' text-gray-400';
-  let effect2 = ' text-gray-400';
-  let effect3 = ' text-gray-400';
-  let effect4 = ' text-gray-400';
-
-  if (id === selections[0]) {
-    effect1 = ' text-blue-500';
-    effect2 = ' text-red-500';
-    effect3 = ' text-yellow-500';
-    effect4 = ' text-teal-400';
-  }
-
-  if (id === selections[1]) {
-    effect1 = ' text-orange-500';
-    effect2 = ' text-green-500';
-    effect3 = ' text-purple-500';
-    effect4 = ' text-pink-400';
-  }
 
   return (
     <div
@@ -41,12 +29,12 @@ const IngredientCard = ({ data }: Props) => {
         <img src={src} alt="Ingredient icon" className="w-10" />
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p className={`font-semibold${effect1}`}>{effects[0]}</p>
-        <p className={`font-semibold${effect2}`}>{effects[1]}</p>
+        <p className={effectColors[0]}>{effects[0]}</p>
+        <p className={effectColors[1]}>{effects[1]}</p>
       </div>
       <div className="flex w-2/5 flex-col text-xs">
-        <p className={`font-semibold${effect3}`}>{effects[2]}</p>
-        <p className={`font-semibold${effect4}`}>{effects[3]}</p>
+        <p className={effectColors[2]}>{effects[2]}</p>
+        <p className={effectColors[3]}>{effects[3]}</p>
       </div>
     </div>
   );
