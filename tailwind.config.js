@@ -8,4 +8,12 @@ export default {
   future: {
     hoverOnlyWhenSupported: true,
   },
+  safelist: [
+    'text-purple-400',
+    'text-amber-500',
+    'text-emerald-700',
+    'text-red-500',
+    'text-sky-500',
+    'text-green-500',
+  ],
 };

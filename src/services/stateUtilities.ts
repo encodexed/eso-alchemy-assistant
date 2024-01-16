@@ -138,6 +138,8 @@ export const getResults = (effects: number[]): MatchedEffects[] => {
       matches.push({
         effect: Effects.effects[sortedEffects[i]].name,
         id: sortedEffects[i],
+        potionHtml: Effects.effects[sortedEffects[i]].potionEffect,
+        poisonHtml: Effects.effects[sortedEffects[i]].poisonEffect,
         timesPresent: occurences,
         isCountered: false,
       });
@@ -153,4 +155,13 @@ export const getResults = (effects: number[]): MatchedEffects[] => {
   });
 
   return matches;
+};
+
+export const getHtmlDescriptions = (
+  results: MatchedEffects[],
+  isPotionShown: boolean,
+) => {
+  if (isPotionShown) {
+    return results.map((result) => result.potionHtml);
+  } else return results.map((result) => result.poisonHtml);
 };

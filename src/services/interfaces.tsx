@@ -36,6 +36,8 @@ export interface EffectData {
 export interface MatchedEffects {
   effect: string;
   id: number;
+  potionHtml: string;
+  poisonHtml: string;
   timesPresent: number;
   isCountered: boolean;
 }
