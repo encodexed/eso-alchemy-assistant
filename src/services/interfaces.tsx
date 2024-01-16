@@ -39,5 +39,6 @@ export interface MatchedEffects {
   potionHtml: string;
   poisonHtml: string;
   timesPresent: number;
+  counterId: number;
   isCountered: boolean;
 }

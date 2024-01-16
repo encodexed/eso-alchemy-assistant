@@ -47,9 +47,10 @@ const Results = () => {
           </Switch>
           <p className={potionTextClass}>Potion</p>
         </div>
-        {htmlDescriptions.map((html) => {
+        {htmlDescriptions.map((html, index) => {
           return (
             <p
+              key={`desc ${index}`}
               dangerouslySetInnerHTML={{
                 __html: html,
               }}

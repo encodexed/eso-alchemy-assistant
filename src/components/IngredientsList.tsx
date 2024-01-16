@@ -89,7 +89,7 @@ const IngredientsList = () => {
   }
 
   return (
-    <div className="m-1 flex flex-col justify-center border border-black p-1">
+    <div className="flex flex-col justify-center border border-black p-1">
       <div className="text-center">
         <Heading variant="h3">Ingredients</Heading>
       </div>
@@ -116,9 +116,3 @@ const IngredientsList = () => {
 };
 
 export default IngredientsList;
-
-/**
- * * With zero ingredients selected, should display the list alphabetically, unless filtered by effect.
- * ? With one or two ingredients selected, should display the list in four parts, separated with headers by each effect of the last selected ingredient.
- * % With three ingredients selected, back to alphabetical with selected ingredients at the top, or a results screen
- */

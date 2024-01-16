@@ -141,6 +141,7 @@ export const getResults = (effects: number[]): MatchedEffects[] => {
         potionHtml: Effects.effects[sortedEffects[i]].potionEffect,
         poisonHtml: Effects.effects[sortedEffects[i]].poisonEffect,
         timesPresent: occurences,
+        counterId: Effects.effects[sortedEffects[i]].counterEffect,
         isCountered: false,
       });
     }
@@ -161,7 +162,67 @@ export const getHtmlDescriptions = (
   results: MatchedEffects[],
   isPotionShown: boolean,
 ) => {
+  const descs: string[] = [];
   if (isPotionShown) {
-    return results.map((result) => result.potionHtml);
-  } else return results.map((result) => result.poisonHtml);
+    results.forEach((result) => {
+      if (!result.isCountered) descs.push(result.potionHtml);
+    });
+  } else {
+    results.forEach((result) => {
+      if (!result.isCountered) descs.push(result.poisonHtml);
+    });
+  }
+
+  return descs;
+};
+
+export const getCardEffectColors = (
+  id: number,
+  selections: number[],
+  results: MatchedEffects[],
+) => {
+  const def = 'font-semibold text-gray-400';
+  if (selections.length === 3) return analyseMatchedEffects(id, results);
+
+  if (id === selections[0]) {
+    return [
+      'font-semibold text-blue-500',
+      'font-semibold text-red-500',
+      'font-semibold text-yellow-500',
+      'font-semibold text-teal-400',
+    ];
+  }
+
+  if (id === selections[1]) {
+    return [
+      'font-semibold text-orange-500',
+      'font-semibold text-green-500',
+      'font-semibold text-purple-500',
+      'font-semibold text-pink-400',
+    ];
+  }
+
+  return [def, def, def, def];
+};
+
+export const analyseMatchedEffects = (
+  id: number,
+  results: MatchedEffects[],
+) => {
+  const thisEffectIds = Ingredients.ingredients[id].effectsIDs;
+  const markedCounters = results.map((result) => {
+    if (result.isCountered) return result.counterId;
+    else return -1;
+  });
+  const markedCompatibles = results.map((result) => {
+    if (!result.isCountered) return result.id;
+  });
+
+  return thisEffectIds.map((eID) => {
+    if (markedCounters.includes(eID)) {
+      return 'font-bold text-red-500';
+    } else if (markedCompatibles.includes(eID)) {
+      return 'font-bold text-green-500';
+    } else return 'font-semibold text-gray-400';
+  });
 };
