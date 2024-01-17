@@ -50,7 +50,7 @@ const IngredientsList = () => {
 
   if (!selections.length && filteringBy < 0) {
     return (
-      <div className="border border-black py-1">
+      <div className="flex flex-col items-center gap-2 rounded-sm border border-gray-300 py-1">
         <div className="text-center">
           <Heading variant="h3">Ingredients</Heading>
           <p className="text-sm">
@@ -69,7 +69,7 @@ const IngredientsList = () => {
 
   if (!selections.length && filteringBy >= 0) {
     return (
-      <div className="border border-black py-1">
+      <div className="flex flex-col items-center gap-2 rounded-sm border border-gray-300 py-1">
         <div className="text-center">
           <Heading variant="h3">Ingredients</Heading>
           <p className="text-sm">
@@ -89,7 +89,7 @@ const IngredientsList = () => {
   }
 
   return (
-    <div className="flex flex-col justify-center border border-black p-1">
+    <div className="flex flex-col gap-2 rounded-sm border border-gray-300 p-2">
       <div className="text-center">
         <Heading variant="h3">Ingredients</Heading>
       </div>

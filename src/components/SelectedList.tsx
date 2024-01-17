@@ -6,15 +6,17 @@ import IngredientCard from './IngredientCard';
 const SelectedList = () => {
   const { ingredientsList, selections } = useContext(LogicContext);
 
+  const subtext = selections.length
+    ? 'Tap to remove ingredients'
+    : 'Selected ingredients will show up here';
+
   return (
-    <div className="flex h-56 flex-col border border-black p-1 pr-3">
+    <div className="flex h-56 flex-col items-center border border-gray-300 p-1">
       <div className="text-center">
         <Heading variant="h3">Selected Ingredients</Heading>
-        {!selections.length && (
-          <p className="text-sm">Selected ingredients will show up here</p>
-        )}
+        <p className="text-sm">{subtext}</p>
       </div>
-      <div className="flex flex-col">
+      <div className="flex w-full flex-col">
         {selections.map((i) => {
           return (
             <IngredientCard

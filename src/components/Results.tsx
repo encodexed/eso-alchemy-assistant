@@ -24,7 +24,7 @@ const Results = () => {
     : 'font-bold text-gray-400';
 
   return (
-    <div className="border border-black py-1">
+    <div className="border border-gray-300 py-1">
       <div className="text-center">
         <Heading variant="h3">Results</Heading>
       </div>
