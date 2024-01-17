@@ -1,5 +1,6 @@
-import { EffectData } from './interfaces';
+import { EffectData, IngredientData, MatchedEffects } from './interfaces';
 import Ingredients from '../data/IngredientsData.json';
+import Effects from '../data/EffectsData.json';
 
 export const toggleIngredient = (
   id: number,
@@ -25,9 +26,11 @@ export const toggleIngredient = (
   return { effects: newEffects, selections: newSelections };
 };
 
-export const getHighlightedEffects = (selections: number[]): number[] => {
-  if (selections.length === 0) return [];
-  return Ingredients.ingredients[selections[selections.length - 1]].effectsIDs;
+export const getEffectsList = (selections: number[]): number[] => {
+  if (!selections.length) return [];
+  return selections.flatMap((iID) => {
+    return Ingredients.ingredients[iID].effectsIDs;
+  });
 };
 
 export const assignColors = (eIDs: number[], hIDs: number[]) => {
@@ -37,20 +40,189 @@ export const assignColors = (eIDs: number[], hIDs: number[]) => {
     switch (index) {
       case 0:
         isIncompatible = false;
-        return 'bg-blue-500 border-blue-500';
+        return 'bg-blue-100 border-2 border-blue-400';
       case 1:
         isIncompatible = false;
-        return 'bg-red-500 border-red-500';
+        return 'bg-red-100 border-2 border-red-400';
       case 2:
         isIncompatible = false;
-        return 'bg-orange-500 border-orange-500';
+        return 'bg-yellow-100 border-2 border-yellow-400';
       case 3:
         isIncompatible = false;
-        return 'bg-green-500 border-green-500';
+        return 'bg-teal-100 border-2 border-teal-400';
+      case 4:
+        isIncompatible = false;
+        return 'bg-orange-100 border-2 border-orange-400';
+      case 5:
+        isIncompatible = false;
+        return 'bg-green-100 border-2 border-green-400';
+      case 6:
+        isIncompatible = false;
+        return 'bg-purple-100 border-2 border-purple-400';
+      case 7:
+        isIncompatible = false;
+        return 'bg-pink-100 border-2 border-pink-400';
       default:
         return '';
     }
   });
 
   return { ids: colors, isIncompatible };
+};
+
+export const getIcons = (eIDs: number[]) => {
+  return eIDs.map((eID) => {
+    return Effects.effects[eID].icon;
+  });
+};
+
+export const getEffectNamesFromIds = (eIDs: number[]) => {
+  return eIDs.map((eID) => {
+    return Effects.effects[eID].name;
+  });
+};
+
+export const getIngredientsCompatibleByEffect = (eID: number) => {
+  const viable: IngredientData[] = [];
+  Ingredients.ingredients.forEach((i) => {
+    if (i.effectsIDs.includes(eID)) viable.push(i);
+  });
+  return viable;
+};
+
+export const trimSections = (
+  headings: string[],
+  ingredients: IngredientData[][],
+  colors: string[],
+) => {
+  const uniqueHeadings: string[] = [];
+  const uniqueIngredientSelections: IngredientData[][] = [];
+  const uniqueColors: string[] = [];
+  headings.forEach((heading, index) => {
+    if (!uniqueHeadings.includes(heading)) {
+      uniqueHeadings.push(heading);
+      uniqueIngredientSelections.push(ingredients[index]);
+      uniqueColors.push(colors[index]);
+    }
+  });
+
+  return {
+    headings: uniqueHeadings,
+    viable: uniqueIngredientSelections,
+    colors: uniqueColors,
+  };
+};
+
+export const getResults = (effects: number[]): MatchedEffects[] => {
+  if (!effects) return [];
+
+  // Clone and sort the effectsList
+  const sortedEffects: number[] = [...effects].sort();
+
+  const matches: MatchedEffects[] = [];
+
+  // Find matches based on numbers occurring 2 or 3 times consecutively
+  for (let i = 0; i < sortedEffects.length - 1; i++) {
+    // Compare current number with next number
+    if (sortedEffects[i] === sortedEffects[i + 1]) {
+      let occurences = 2;
+
+      // If 2 in a row, also check for 3 in a row
+      if (
+        i <= sortedEffects.length - 2 &&
+        sortedEffects[i] === sortedEffects[i + 2]
+      ) {
+        occurences = 3;
+        i++;
+      }
+      matches.push({
+        effect: Effects.effects[sortedEffects[i]].name,
+        id: sortedEffects[i],
+        potionHtml: Effects.effects[sortedEffects[i]].potionEffect,
+        poisonHtml: Effects.effects[sortedEffects[i]].poisonEffect,
+        timesPresent: occurences,
+        counterId: Effects.effects[sortedEffects[i]].counterEffect,
+        isCountered: false,
+      });
+    }
+  }
+
+  // Check for counters
+  matches.forEach((match) => {
+    const counter = Effects.effects[match.id].counterEffect;
+    if (effects.includes(counter)) {
+      match.isCountered = true;
+    }
+  });
+
+  return matches;
+};
+
+export const getHtmlDescriptions = (
+  results: MatchedEffects[],
+  isPotionShown: boolean,
+) => {
+  const descs: string[] = [];
+  if (isPotionShown) {
+    results.forEach((result) => {
+      if (!result.isCountered) descs.push(result.potionHtml);
+    });
+  } else {
+    results.forEach((result) => {
+      if (!result.isCountered) descs.push(result.poisonHtml);
+    });
+  }
+
+  return descs;
+};
+
+export const getCardEffectColors = (
+  id: number,
+  selections: number[],
+  results: MatchedEffects[],
+) => {
+  const def = 'font-semibold text-gray-400';
+  if (selections.length === 3) return analyseMatchedEffects(id, results);
+
+  if (id === selections[0]) {
+    return [
+      'font-semibold text-blue-500',
+      'font-semibold text-red-500',
+      'font-semibold text-yellow-500',
+      'font-semibold text-teal-400',
+    ];
+  }
+
+  if (id === selections[1]) {
+    return [
+      'font-semibold text-orange-500',
+      'font-semibold text-green-500',
+      'font-semibold text-purple-500',
+      'font-semibold text-pink-400',
+    ];
+  }
+
+  return [def, def, def, def];
+};
+
+export const analyseMatchedEffects = (
+  id: number,
+  results: MatchedEffects[],
+) => {
+  const thisEffectIds = Ingredients.ingredients[id].effectsIDs;
+  const markedCounters = results.map((result) => {
+    if (result.isCountered) return result.counterId;
+    else return -1;
+  });
+  const markedCompatibles = results.map((result) => {
+    if (!result.isCountered) return result.id;
+  });
+
+  return thisEffectIds.map((eID) => {
+    if (markedCounters.includes(eID)) {
+      return 'font-bold text-red-500';
+    } else if (markedCompatibles.includes(eID)) {
+      return 'font-bold text-green-500';
+    } else return 'font-semibold text-gray-400';
+  });
 };

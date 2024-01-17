@@ -2,8 +2,11 @@ export interface LogicCtx {
   ingredientsList: IngredientData[];
   effectsList: EffectData[];
   selections: number[];
-  highlightedEffects: number[];
+  effectsPool: number[];
+  filteringBy: number;
+  results: MatchedEffects[];
   toggleSelectedIngredient: (id: number, isAdding: boolean) => void;
+  applyFilter: (id: number) => void;
 }
 
 export interface IngredientData {
@@ -28,4 +31,14 @@ export interface EffectData {
   poisonEffect: string;
   src: string;
   timesPresent: number;
+}
+
+export interface MatchedEffects {
+  effect: string;
+  id: number;
+  potionHtml: string;
+  poisonHtml: string;
+  timesPresent: number;
+  counterId: number;
+  isCountered: boolean;
 }
