@@ -25,7 +25,7 @@ const IngredientCard = ({ data }: Props) => {
   return (
     <div
       onClick={clickHandler}
-      className="my-0.5 flex w-full cursor-pointer items-center gap-1 border border-gray-200 py-1 shadow-sm hover:border-red-400 hover:shadow-md hover:shadow-red-200"
+      className="my-0.5 flex w-full cursor-pointer items-center gap-1 border border-gray-200 bg-white py-1 shadow-sm hover:border-red-400 hover:shadow-md hover:shadow-red-200"
     >
       <div className="h-8 w-[10%]">
         <img src={src} alt="Ingredient icon" className="w-8" />

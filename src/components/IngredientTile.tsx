@@ -38,7 +38,7 @@ const IngredientTile = ({ data }: Props) => {
 
   return (
     <div
-      className="m-0.5 flex h-[104px] w-24 cursor-pointer flex-col items-center rounded-sm border border-gray-200 p-1 shadow-sm hover:border-gray-300 hover:shadow-md"
+      className="m-0.5 flex h-[104px] w-24 cursor-pointer flex-col items-center rounded-sm border border-gray-200 bg-white p-1 shadow-sm hover:border-gray-300 hover:shadow-md"
       onClick={clickHandler}
     >
       <div className="h-1/2">

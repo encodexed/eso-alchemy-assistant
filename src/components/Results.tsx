@@ -24,9 +24,9 @@ const Results = () => {
     : 'font-bold text-gray-400';
 
   return (
-    <div className="border border-gray-300 py-1">
+    <div className="border border-gray-200 bg-white py-1 shadow-sm">
       <div className="text-center">
-        <Heading variant="h3">Results</Heading>
+        <Heading variant="h4">Results</Heading>
       </div>
       <div className="flex flex-col items-center gap-2">
         <img src={imgSrc} alt="Concoction image" />

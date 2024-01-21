@@ -46,13 +46,11 @@ const IngredientsList = () => {
     setHeadingColors(trimmed.colors);
   }, [selections]);
 
-  // TODO: Heading with text can be its own component, will be DRYer
-
   if (!selections.length && filteringBy < 0) {
     return (
-      <div className="flex flex-col items-center gap-2 rounded-sm border border-gray-300 py-1">
+      <div className="flex flex-col items-center gap-2 rounded-sm border border-gray-200 bg-white py-1 shadow-sm">
         <div className="text-center">
-          <Heading variant="h3">Ingredients</Heading>
+          <Heading variant="h4">Ingredients</Heading>
           <p className="text-sm">
             Select ingredients or effects to filter by to get started
           </p>
@@ -69,7 +67,7 @@ const IngredientsList = () => {
 
   if (!selections.length && filteringBy >= 0) {
     return (
-      <div className="flex flex-col items-center gap-2 rounded-sm border border-gray-300 py-1">
+      <div className="flex flex-col items-center gap-2 rounded-sm border border-gray-200 bg-white py-1 shadow-sm">
         <div className="text-center">
           <Heading variant="h3">Ingredients</Heading>
           <p className="text-sm">
@@ -89,9 +87,12 @@ const IngredientsList = () => {
   }
 
   return (
-    <div className="flex flex-col gap-2 rounded-sm border border-gray-300 p-2">
+    <div className="flex flex-col gap-2 rounded-sm border border-gray-200 bg-white py-1 shadow-sm">
       <div className="text-center">
         <Heading variant="h3">Ingredients</Heading>
+        <p className="text-sm text-gray-500">
+          Add more ingredients for more effects
+        </p>
       </div>
       {effectsNamesPool.map((eff, index) => {
         return (

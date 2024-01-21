@@ -11,10 +11,13 @@ const SelectedList = () => {
     : 'Selected ingredients will show up here';
 
   return (
-    <div className="flex h-56 flex-col items-center border border-gray-300 p-1">
+    <div className="flex h-60 flex-col items-center border border-gray-200 bg-white p-1 shadow-sm">
       <div className="text-center">
-        <Heading variant="h3">Selected Ingredients</Heading>
-        <p className="text-sm">{subtext}</p>
+        <Heading variant="h2" className="text-[#1a6464]">
+          ESO Alchemy Assistant
+        </Heading>
+        <Heading variant="h4">Selected Ingredients</Heading>
+        <p className="text-sm text-gray-500">{subtext}</p>
       </div>
       <div className="flex w-full flex-col">
         {selections.map((i) => {
