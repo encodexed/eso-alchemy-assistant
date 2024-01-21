@@ -15,7 +15,7 @@ const Filter = () => {
       <select
         onChange={handleFilter}
         defaultValue={'-1'}
-        className="rounded-lg border border-gray-300"
+        className="rounded-md border border-gray-300 px-1 py-0.5"
       >
         <option value="-1" disabled>
           Filter by effect:
