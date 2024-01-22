@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import './App.css';
 import IngredientsList from './components/IngredientsList';
 import Results from './components/Results';
 import SelectedList from './components/SelectedList';

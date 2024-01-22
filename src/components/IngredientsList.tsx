@@ -51,7 +51,7 @@ const IngredientsList = () => {
       <div className="flex flex-col items-center gap-2 rounded-sm border border-gray-200 bg-white py-1 shadow-sm">
         <div className="text-center">
           <Heading variant="h4">Ingredients</Heading>
-          <p className="text-sm">
+          <p className="text-sm text-gray-500">
             Select ingredients or effects to filter by to get started
           </p>
         </div>
@@ -70,7 +70,7 @@ const IngredientsList = () => {
       <div className="flex flex-col items-center gap-2 rounded-sm border border-gray-200 bg-white py-1 shadow-sm">
         <div className="text-center">
           <Heading variant="h3">Ingredients</Heading>
-          <p className="text-sm">
+          <p className="text-sm text-gray-500">
             Select ingredients or effects to filter by to get started
           </p>
         </div>
