@@ -1,8 +1,12 @@
 # Elder Scrolls Online Alchemy Assistant
 
+Live demo: <a href='https://encodexed.github.io/eso-alchemy-assistant/'>Click here</a>
+
 ## Demo & Snippets
 
----
+<img width="556" alt="Screenshot 2024-01-29 at 4 16 06 pm" src="https://github.com/encodexed/eso-alchemy-assistant/assets/107448691/39ea5b23-5c0f-41e3-a2e7-373417f7fff5">
+<img width="509" alt="Screenshot 2024-01-29 at 4 14 39 pm" src="https://github.com/encodexed/eso-alchemy-assistant/assets/107448691/92ffc557-a095-44b2-998c-9218d3b38fb4">
+
 
 ## Requirements / Purpose
 
