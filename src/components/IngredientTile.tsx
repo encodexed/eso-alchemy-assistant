@@ -17,6 +17,10 @@ const IngredientTile = ({ data }: Props) => {
   const { id, name, src, effectsIDs } = data;
   const isSelected = selections.includes(data.id);
 
+  if (data.id === 0) {
+    console.log({ data });
+  }
+
   useEffect(() => {
     // Setting the colors displayed at the bottom of the tile
     const colors = assignColors(effectsIDs, effectsPool);
