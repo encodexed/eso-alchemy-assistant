@@ -5,7 +5,7 @@
       "name": "Beetle Scuttle",
       "effects": ["Breach", "Increase Armor", "Protection", "Vitality"],
       "effectsIDs": [0, 10, 17, 29],
-      "src": ".src/assets/images/images/ingredients/Beetle_Scuttle.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Beetle_Scuttle.png"
     },
     {
       "id": 1,
@@ -17,14 +17,14 @@
         "Speed"
       ],
       "effectsIDs": [23, 13, 18, 24],
-      "src": "../assets/images/images/ingredients/Blessed_Thistle.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Blessed_Thistle.png"
     },
     {
       "id": 2,
       "name": "Blue Entoloma",
       "effects": ["Ravage Magicka", "Cowardice", "Restore Health", "Invisible"],
       "effectsIDs": [19, 1, 21, 14],
-      "src": "../assets/images/images/ingredients/Blue_Entoloma.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Blue_Entoloma.png"
     },
     {
       "id": 3,
@@ -36,7 +36,7 @@
         "Restore Magicka"
       ],
       "effectsIDs": [12, 21, 1, 22],
-      "src": "../assets/images/images/ingredients/Bugloss.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Bugloss.png"
     },
     {
       "id": 4,
@@ -48,14 +48,14 @@
         "Vitality"
       ],
       "effectsIDs": [21, 15, 27, 29],
-      "src": "../assets/images/images/ingredients/Butterfly_Wing.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Butterfly_Wing.png"
     },
     {
       "id": 5,
       "name": "Chaurus Egg",
       "effects": ["Timidity", "Ravage Magicka", "Restore Stamina", "Detection"],
       "effectsIDs": [26, 19, 23, 3],
-      "src": "../assets/images/images/ingredients/Chaurus_Egg.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Chaurus_Egg.png"
     },
     {
       "id": 6,
@@ -67,7 +67,7 @@
         "Defile"
       ],
       "effectsIDs": [12, 9, 30, 2],
-      "src": "../assets/images/images/ingredients/Clam_Gall.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Clam_Gall.png"
     },
     {
       "id": 7,
@@ -79,7 +79,7 @@
         "Unstoppable"
       ],
       "effectsIDs": [21, 22, 23, 28],
-      "src": "../assets/images/images/ingredients/Columbine.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Columbine.png"
     },
     {
       "id": 8,
@@ -91,7 +91,7 @@
         "Detection"
       ],
       "effectsIDs": [22, 11, 18, 3],
-      "src": "../assets/images/images/ingredients/Corn_Flower.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Corn_Flower.png"
     },
     {
       "id": 9,
@@ -103,28 +103,28 @@
         "Restore Health"
       ],
       "effectsIDs": [26, 25, 7, 21],
-      "src": "../assets/images/images/ingredients/Crimson_Nirnroot.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Crimson_Nirnroot.png"
     },
     {
       "id": 10,
       "name": "Dragon's Bile",
       "effects": ["Heroism", "Vulnerability", "Invisible", "Vitality"],
       "effectsIDs": [8, 30, 14, 29],
-      "src": "../assets/images/images/ingredients/Dragons_Bile.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Dragons_Bile.png"
     },
     {
       "id": 11,
       "name": "Dragon's Blood",
       "effects": ["Lingering Health", "Restore Health", "Heroism", "Defile"],
       "effectsIDs": [15, 21, 8, 2],
-      "src": "../assets/images/images/ingredients/Dragons_Blood.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Dragons_Blood.png"
     },
     {
       "id": 12,
       "name": "Dragon Rheum",
       "effects": ["Restore Magicka", "Enervation", "Heroism", "Speed"],
       "effectsIDs": [22, 4, 8, 24],
-      "src": "../assets/images/images/ingredients/Dragon_Rheum.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Dragon_Rheum.png"
     },
     {
       "id": 13,
@@ -136,7 +136,7 @@
         "Weapon Critical"
       ],
       "effectsIDs": [13, 23, 6, 31],
-      "src": "../assets/images/images/ingredients/Dragonthorn.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Dragonthorn.png"
     },
     {
       "id": 14,
@@ -148,7 +148,7 @@
         "Entrapment"
       ],
       "effectsIDs": [18, 19, 20, 5],
-      "src": "../assets/images/images/ingredients/Emetic_Russula.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Emetic_Russula.png"
     },
     {
       "id": 15,
@@ -160,14 +160,14 @@
         "Vitality"
       ],
       "effectsIDs": [20, 30, 7, 29],
-      "src": "../assets/images/images/ingredients/Fleshfly_Larva.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Fleshfly_Larva.png"
     },
     {
       "id": 16,
       "name": "Imp Stool",
       "effects": ["Maim", "Ravage Stamina", "Increase Armor", "Enervation"],
       "effectsIDs": [16, 20, 10, 4],
-      "src": "../assets/images/images/ingredients/Imp_Stool.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Imp_Stool.png"
     },
     {
       "id": 17,
@@ -179,14 +179,14 @@
         "Spell Critical"
       ],
       "effectsIDs": [11, 22, 0, 25],
-      "src": "../assets/images/images/ingredients/Ladys_Smock.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Ladys_Smock.png"
     },
     {
       "id": 18,
       "name": "Luminous Russula",
       "effects": ["Ravage Stamina", "Maim", "Restore Health", "Hindrance"],
       "effectsIDs": [20, 16, 21, 9],
-      "src": "../assets/images/images/ingredients/Luminous_Russula.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Luminous_Russula.png"
     },
     {
       "id": 19,
@@ -198,7 +198,7 @@
         "Restore Stamina"
       ],
       "effectsIDs": [10, 21, 16, 23],
-      "src": "../assets/images/images/ingredients/Mountain_Flower.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Mountain_Flower.png"
     },
     {
       "id": 20,
@@ -210,14 +210,14 @@
         "Defile"
       ],
       "effectsIDs": [12, 10, 17, 2],
-      "src": "../assets/images/images/ingredients/Mudcrab_Chitin.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Mudcrab_Chitin.png"
     },
     {
       "id": 21,
       "name": "Namira's Rot",
       "effects": ["Spell Critical", "Speed", "Invisible", "Unstoppable"],
       "effectsIDs": [25, 24, 14, 28],
-      "src": "../assets/images/images/ingredients/Namiras_Rot.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Namiras_Rot.png"
     },
     {
       "id": 22,
@@ -229,21 +229,21 @@
         "Defile"
       ],
       "effectsIDs": [18, 17, 7, 2],
-      "src": "../assets/images/images/ingredients/Nightshade.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Nightshade.png"
     },
     {
       "id": 23,
       "name": "Nirnroot",
       "effects": ["Ravage Health", "Uncertainty", "Enervation", "Invisible"],
       "effectsIDs": [18, 27, 4, 14],
-      "src": "../assets/images/images/ingredients/Nirnroot.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Nirnroot.png"
     },
     {
       "id": 24,
       "name": "Powdered Mother of Pearl",
       "effects": ["Lingering Health", "Speed", "Vitality", "Protection"],
       "effectsIDs": [15, 24, 29, 17],
-      "src": "../assets/images/images/ingredients/Powdered_Mother_of_Pearl.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Powdered_Mother_of_Pearl.png"
     },
     {
       "id": 25,
@@ -255,14 +255,14 @@
         "Lingering Health"
       ],
       "effectsIDs": [19, 24, 30, 15],
-      "src": "../assets/images/images/ingredients/Scrib_Jelly.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Scrib_Jelly.png"
     },
     {
       "id": 26,
       "name": "Spider Egg",
       "effects": ["Hindrance", "Invisible", "Lingering Health", "Defile"],
       "effectsIDs": [9, 14, 15, 2],
-      "src": "../assets/images/images/ingredients/Spider_Egg.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Spider_Egg.png"
     },
     {
       "id": 27,
@@ -274,21 +274,21 @@
         "Ravage Stamina"
       ],
       "effectsIDs": [6, 18, 13, 20],
-      "src": "../assets/images/images/ingredients/Stinkhorn.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Stinkhorn.png"
     },
     {
       "id": 28,
       "name": "Torchbug Thorax",
       "effects": ["Fracture", "Enervation", "Detection", "Vitality"],
       "effectsIDs": [6, 4, 3, 29],
-      "src": "../assets/images/images/ingredients/Torchbug_Thorax.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Torchbug_Thorax.png"
     },
     {
       "id": 29,
       "name": "Vile Coagulant",
       "effects": ["Timidity", "Ravage Health", "Restore Magicka", "Protection"],
       "effectsIDs": [26, 18, 22, 17],
-      "src": "../assets/images/images/ingredients/Vile_Coagulant.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Vile_Coagulant.png"
     },
     {
       "id": 30,
@@ -300,7 +300,7 @@
         "Ravage Magicka"
       ],
       "effectsIDs": [0, 18, 11, 19],
-      "src": "../assets/images/images/ingredients/Violet_Coprinus.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Violet_Coprinus.png"
     },
     {
       "id": 31,
@@ -312,7 +312,7 @@
         "Entrapment"
       ],
       "effectsIDs": [21, 25, 31, 5],
-      "src": "../assets/images/images/ingredients/Water_Hyacinth.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Water_Hyacinth.png"
     },
     {
       "id": 32,
@@ -324,14 +324,14 @@
         "Detection"
       ],
       "effectsIDs": [1, 19, 12, 3],
-      "src": "../assets/images/images/ingredients/White_Cap.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/White_Cap.png"
     },
     {
       "id": 33,
       "name": "Wormwood",
       "effects": ["Weapon Critical", "Hindrance", "Detection", "Unstoppable"],
       "effectsIDs": [31, 9, 3, 28],
-      "src": "../assets/images/images/ingredients/Wormwood.png"
+      "src": "/eso-alchemy-assistant/images/ingredients/Wormwood.png"
     }
   ]
 }

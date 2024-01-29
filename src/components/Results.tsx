@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import Heading from './ui/Heading';
-import PotionImage from '../assets/images/potions/Golden_Potion.png';
-import PoisonImage from '../assets/images/poisons/Red_Poison.png';
+import PotionImage from '/images/potions/Golden_Potion.png';
+import PoisonImage from '/images/poisons/Red_Poison.png';
 import { LogicContext } from '../context/LogicContext';
 import { getHtmlDescriptions } from '../services/stateUtilities';
 import { Switch } from '@headlessui/react';
